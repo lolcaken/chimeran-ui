@@ -1,0 +1,11 @@
+
+/* Row list: icon, two-line label, meta, chevron. */
+.n1-list{display:flex;flex-direction:column;gap:4px;margin-bottom:6px}
+.n1-list-row{display:flex;align-items:center;gap:9px;min-height:44px;padding:6px 10px;border-radius:10px;border:1px solid var(--n1-stroke);background:linear-gradient(180deg,var(--n1-el),var(--n1-el2));color:var(--n1-text);cursor:pointer;transition:border-color .16s ease,background .18s ease}
+.n1-list-row:hover{border-color:var(--n1-stroke-hover)}
+.n1-list-row .n1-ic{flex:none;color:var(--n1-faint);display:inline-flex}
+.n1-list-main{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:1px}
+.n1-list-main b{font-size:11.5px;font-weight:600;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.n1-list-main span{font-size:10px;color:var(--n1-dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.n1-list-meta{flex:none;font-size:10px;color:var(--n1-faint);font-variant-numeric:tabular-nums}
+.n1-list-row .n1-chev{flex:none;color:#4a4a4a;font-size:12px}

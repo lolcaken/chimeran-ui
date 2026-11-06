@@ -1,0 +1,8 @@
+
+/* Numeric stepper: 28px buttons, tabular value. */
+.n1-stepper{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:42px;padding:6px 8px 6px 11px;margin-bottom:6px;border-radius:11px;border:1px solid var(--n1-stroke);background:linear-gradient(180deg,var(--n1-el),var(--n1-el2))}
+.n1-stepper .n1-label{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+.n1-stepper-controls{display:flex;align-items:center;gap:6px;flex:none}
+.n1-stepper button{width:26px;height:26px;padding:0;border-radius:8px;border:1px solid #333;background:#161616;color:#dcdcdc;font:inherit;font-size:13px;line-height:1;cursor:pointer;transition:border-color .16s ease,color .16s ease}
+.n1-stepper button:hover{border-color:#4a4a4a;color:#fff}
+.n1-stepper .n1-value{min-width:34px;text-align:center;font-size:11.5px;font-variant-numeric:tabular-nums;color:#fff}

@@ -1,0 +1,9 @@
+
+/* Determinate + indeterminate bar, 6px. */
+.n1-progress{position:relative;width:100%;height:6px;border-radius:999px;background:#242424;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.5)}
+.n1-progress>i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--n1-accent),var(--n1-accent-edge));box-shadow:0 0 10px rgba(32,201,144,.35);transition:width .2s ease}
+.n1-progress.n1-indeterminate>i{width:42%!important;animation:n1-bar 1.1s linear infinite}
+.n1-progress-row{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.n1-progress-row .n1-progress{flex:1 1 auto}
+.n1-progress-row span{flex:none;font-size:10px;color:var(--n1-dim);font-variant-numeric:tabular-nums}
+@keyframes n1-bar{0%{transform:translateX(-110%)}100%{transform:translateX(340%)}}

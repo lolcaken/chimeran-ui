@@ -1,0 +1,4 @@
+
+/* Keyboard cap. */
+.n1-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 5px;border-radius:6px;border:1px solid #333;border-bottom-width:2px;background:#161616;color:#cfcfcf;font:10px/1 "Cascadia Mono","Consolas",ui-monospace,monospace}
+.n1-kbd-group{display:inline-flex;align-items:center;gap:4px}

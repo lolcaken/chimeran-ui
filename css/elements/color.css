@@ -1,0 +1,6 @@
+
+/* Colour swatch + hex field. */
+.n1-color{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:42px;padding:0 11px;margin-bottom:6px;border-radius:11px;border:1px solid var(--n1-stroke);background:linear-gradient(180deg,var(--n1-el),var(--n1-el2))}
+.n1-color .n1-swatch{position:relative;flex:none;width:24px;height:24px;border-radius:8px;border:1px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+.n1-color .n1-swatch input{position:absolute;inset:-6px;width:40px;height:40px;padding:0;border:0;background:transparent;cursor:pointer}
+.n1-color code{font:11px/1 "Cascadia Mono","Consolas",monospace;color:var(--n1-dim)}

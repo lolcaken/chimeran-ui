@@ -1,0 +1,6 @@
+
+/* Key chip: capture state turns amber. */
+.n1-key{font-size:10px;color:#cfcfcf;background:#161616;border:1px solid #333;border-radius:7px;padding:3px 7px;min-width:56px;text-align:center;font-variant-numeric:tabular-nums;font-family:inherit;cursor:pointer;transition:border-color .16s ease,color .16s ease}
+.n1-key:hover{border-color:#4a4a4a;color:#fff}
+.n1-key.bind{color:var(--n1-warn);border-color:rgba(240,168,60,.5)}
+.n1-key.disabled{opacity:.5;pointer-events:none}

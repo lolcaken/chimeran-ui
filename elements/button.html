@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Button — ChimeraUI</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/elements/button.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Buttons">Buttons</a><span>/</span>Button</nav>
+  <h1 class="cu-title">Button</h1>
+  <p class="cu-lede">The 42px row is the workhorse of the kit: a label on the left, a value or control on the right, radius 11, the panel gradient. Variants only change the stroke and fill, never the geometry.</p>
+  <div class="cu-label">Row</div>
+  <div class="cu-stage">
+    <button class="n1-el"><span class="n1-label">Reset configuration</span><span class="n1-ic">&#8250;</span></button>
+    <button class="n1-el n1-action"><span class="n1-label">Export profile</span><span class="n1-badge">JSON</span></button>
+  </div>
+  <div class="cu-label">Variants</div>
+  <div class="cu-stage">
+    <button class="n1-el n1-primary"><span class="n1-label">Apply</span></button>
+    <button class="n1-el n1-danger"><span class="n1-label">Delete all</span></button>
+    <button class="n1-el n1-ghost"><span class="n1-label">Cancel</span></button>
+    <button class="n1-el n1-sm"><span class="n1-label">Small 34px row</span></button>
+  </div>
+  <div class="cu-label">States</div>
+  <div class="cu-stage">
+    <button class="n1-el" disabled><span class="n1-label">Disabled</span></button>
+    <button class="n1-el running"><span class="n1-label">Running (bar sweep)</span></button>
+  </div>
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet">&lt;button class="n1-el"&gt;
+  &lt;span class="n1-label"&gt;Reset configuration&lt;/span&gt;
+  &lt;span class="n1-ic"&gt;&amp;#8250;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button class="n1-el n1-primary"&gt;Apply&lt;/button&gt;
+&lt;button class="n1-el n1-danger"&gt;Delete all&lt;/button&gt;
+&lt;button class="n1-el n1-ghost"&gt;Cancel&lt;/button&gt;
+&lt;button class="n1-el n1-sm"&gt;Small&lt;/button&gt;
+&lt;button class="n1-el" disabled&gt;Disabled&lt;/button&gt;
+&lt;button class="n1-el running"&gt;Running&lt;/button&gt;</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.1.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/chimera-ui.js"></script>
+<script>ChimeraUI.attach(document);</script>
+</body>
+</html>

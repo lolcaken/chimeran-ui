@@ -1,0 +1,18 @@
+
+/* Panel shell: 458px, radius 20, the same two-layer surface as the game panel. */
+#n1-panel{
+  position:relative;z-index:2147483000;width:458px;max-width:calc(100vw - 20px);
+  max-height:calc(100vh - 18px);pointer-events:auto;
+  color:var(--n1-text);
+  background:radial-gradient(120% 55% at 50% -12%,rgba(255,255,255,.06),transparent 60%),linear-gradient(180deg,#080808 0%,#131313 58%,#191919 100%);
+  border:1px solid rgba(255,255,255,.11);border-radius:20px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 24px 64px rgba(0,0,0,.7),0 4px 14px rgba(0,0,0,.5);
+  overflow:hidden;user-select:none;
+  animation:n1-in .22s cubic-bezier(.2,.8,.2,1) both;
+}
+#n1-panel.collapsed .n1-main{grid-template-rows:0fr;opacity:0}
+#n1-panel.n1-out{animation:n1-out .18s cubic-bezier(.4,0,.7,0) forwards;pointer-events:none}
+.n1-main{display:grid;grid-template-rows:1fr;transition:grid-template-rows .26s cubic-bezier(.2,.7,.3,1),opacity .18s ease}
+.n1-main-inner{min-height:0;overflow:hidden}
+@keyframes n1-in{from{opacity:0;transform:translateY(9px) scale(.975)}to{opacity:1;transform:none}}
+@keyframes n1-out{to{opacity:0;transform:translateY(7px) scale(.975)}}

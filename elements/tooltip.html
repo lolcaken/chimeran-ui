@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooltip — ChimeraUI</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/elements/tooltip.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Feedback">Feedback</a><span>/</span>Tooltip</nav>
+  <h1 class="cu-title">Tooltip</h1>
+  <p class="cu-lede">Pure CSS on data-tip, wraps at 200px and opens upward. No portal, no clipping, no JS.</p>
+  <div class="cu-label">Hover or focus</div>
+  <div class="cu-card">
+    <div class="cu-row">
+      <span class="n1-tip" data-tip="Runs on the next frame" tabindex="0"><button class="n1-el n1-sm" style="width:auto;padding:0 12px">Frame step</button></span>
+      <span class="n1-tip" data-tip="A much longer hint that has to wrap inside the 200px cap instead of running off the panel" tabindex="0"><button class="n1-el n1-sm" style="width:auto;padding:0 12px">Long hint</button></span>
+    </div>
+  </div>
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet">&lt;span class="n1-tip" data-tip="Runs on the next frame" tabindex="0"&gt;
+  &lt;button class="n1-el n1-sm"&gt;Frame step&lt;/button&gt;
+&lt;/span&gt;</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.1.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/chimera-ui.js"></script>
+<script>ChimeraUI.attach(document);</script>
+</body>
+</html>

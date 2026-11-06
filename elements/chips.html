@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chips — ChimeraUI</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/elements/chips.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Inputs">Inputs</a><span>/</span>Chips</nav>
+  <h1 class="cu-title">Chips</h1>
+  <p class="cu-lede">A wrapping segmented control. Single-select by default; add data-cn-multi="true" for a set. Chips wrap instead of scrolling, so nothing is ever clipped.</p>
+  <div class="cu-label">Single select</div>
+  <div class="cu-stage">
+    <div class="n1-chips">
+      <button class="n1-chip on">Head</button>
+      <button class="n1-chip">Chest</button>
+      <button class="n1-chip">Nearest</button>
+    </div>
+  </div>
+  <div class="cu-label">Multi select</div>
+  <div class="cu-stage">
+    <div class="n1-chips" data-cn-multi="true">
+      <button class="n1-chip on">ESP</button>
+      <button class="n1-chip on">Chams</button>
+      <button class="n1-chip">Snaplines</button>
+      <button class="n1-chip">Tracers</button>
+      <button class="n1-chip">Radar</button>
+    </div>
+  </div>
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet">&lt;div class="n1-chips" data-cn-multi="true"&gt;
+  &lt;button class="n1-chip on"&gt;ESP&lt;/button&gt;
+  &lt;button class="n1-chip"&gt;Snaplines&lt;/button&gt;
+&lt;/div&gt;</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.1.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/chimera-ui.js"></script>
+<script>ChimeraUI.attach(document);</script>
+</body>
+</html>

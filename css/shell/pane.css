@@ -1,0 +1,10 @@
+
+/* Scroll surface. 410px, 4px scrollbar, bottom fold only while content remains. */
+.n1-stage{position:relative;isolation:isolate}
+.n1-pane{display:none;height:410px;max-height:min(410px,calc(100vh - 112px));overflow-y:auto;overscroll-behavior:contain;padding:0 13px 12px}
+.n1-pane.active{display:block;animation:n1-pane .16s ease both}
+.n1-pane::-webkit-scrollbar{width:4px}
+.n1-pane::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:4px}
+.n1-fade{position:absolute;left:0;right:0;bottom:0;height:64px;pointer-events:none;opacity:0;z-index:2;border-radius:0 0 20px 20px;background:linear-gradient(180deg,rgba(24,24,24,0) 0%,rgba(23,23,23,.62) 46%,rgba(25,25,25,.94) 82%,#191919 100%);box-shadow:0 -18px 26px -18px rgba(0,0,0,.75) inset;transition:opacity .16s ease}
+.n1-fade.on{opacity:1}
+@keyframes n1-pane{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}

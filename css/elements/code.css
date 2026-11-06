@@ -1,0 +1,5 @@
+
+/* Code surface: same border language, monospace 11.5. */
+.n1-code{margin:0 0 6px;padding:10px 11px;border-radius:11px;border:1px solid #242424;background:#0d0d0d;color:#b9c6c2;font:11.5px/1.6 "Cascadia Mono","Consolas",ui-monospace,monospace;overflow:auto;white-space:pre;tab-size:2}
+.n1-code b{color:var(--n1-accent-edge);font-weight:600}
+.n1-code .n1-cmt{color:#5f6b70}

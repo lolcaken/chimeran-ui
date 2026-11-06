@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toast — ChimeraUI</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/elements/toast.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Feedback">Feedback</a><span>/</span>Toast</nav>
+  <h1 class="cu-title">Toast</h1>
+  <p class="cu-lede">Fixed top-right stack, 310px cap, timed bar. Three tones share the same geometry; only the left border and bar change colour.</p>
+  <div class="cu-label">Live</div>
+  <div class="cu-stage">
+    <div class="cu-row">
+      <button class="n1-el n1-sm" style="width:auto;padding:0 12px" data-cn-toast="Saved" data-cn-title="Saved" data-cn-msg="Configuration written to storage.">Info</button>
+      <button class="n1-el n1-sm" style="width:auto;padding:0 12px" data-cn-toast="Warning" data-cn-type="warn" data-cn-title="Warning" data-cn-msg="Profile is older than the schema.">Warn</button>
+      <button class="n1-el n1-sm" style="width:auto;padding:0 12px" data-cn-toast="Failed" data-cn-type="error" data-cn-title="Failed" data-cn-msg="Could not reach the endpoint.">Error</button>
+    </div>
+  </div>
+  <div class="cu-label">Static</div>
+  <div class="cu-stage">
+    <div class="n1-toast" style="animation:none"><div class="n1-toast-title">Saved</div><div class="n1-toast-msg">Configuration written to storage.</div><span class="n1-toast-bar" style="animation:none;width:64%"></span></div>
+  </div>
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet">ChimeraUI.toast(root, {
+  title: 'Saved',
+  message: 'Configuration written to storage.',
+  type: 'info' | 'warn' | 'error',
+  duration: 4200
+});</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.1.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/chimera-ui.js"></script>
+<script>ChimeraUI.attach(document);</script>
+</body>
+</html>

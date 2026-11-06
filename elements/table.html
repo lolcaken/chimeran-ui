@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Table — ChimeraUI</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/elements/table.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Data">Data</a><span>/</span>Table</nav>
+  <h1 class="cu-title">Table</h1>
+  <p class="cu-lede">Fixed layout so a long cell ellipsises instead of pushing the panel wider. Numbers get .n1-num for tabular alignment.</p>
+  <div class="cu-label">Table</div>
+  <div class="cu-stage">
+    <table class="n1-table">
+      <thead><tr><th>Element</th><th>Class</th><th class="n1-num">Size</th></tr></thead>
+      <tbody>
+        <tr><td>Button</td><td>.n1-el</td><td class="n1-num">42</td></tr>
+        <tr><td>Toggle</td><td>.n1-toggle</td><td class="n1-num">42</td></tr>
+        <tr><td>Slider</td><td>.n1-slider</td><td class="n1-num">57</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet">&lt;table class="n1-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Element&lt;/th&gt;&lt;th class="n1-num"&gt;Size&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Button&lt;/td&gt;&lt;td class="n1-num"&gt;42&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.1.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/chimera-ui.js"></script>
+<script>ChimeraUI.attach(document);</script>
+</body>
+</html>

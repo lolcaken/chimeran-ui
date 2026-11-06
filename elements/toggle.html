@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toggle — ChimeraUI</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/elements/toggle.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Inputs">Inputs</a><span>/</span>Toggle</nav>
+  <h1 class="cu-title">Toggle</h1>
+  <p class="cu-lede">A 34x18 track with a 12px knob. The whole row is the hit target; the switch is decoration. State is carried by .on plus aria-pressed.</p>
+  <div class="cu-label">Rows</div>
+  <div class="cu-stage">
+    <button class="n1-toggle on" data-cn="toggle"><span class="n1-label">Wall check</span><span class="n1-track"><span class="n1-knob"></span></span></button>
+    <button class="n1-toggle" data-cn="toggle"><span class="n1-label">Team check</span><span class="n1-track"><span class="n1-knob"></span></span></button>
+  </div>
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet">&lt;button class="n1-toggle on" data-cn="toggle" aria-pressed="true"&gt;
+  &lt;span class="n1-label"&gt;Wall check&lt;/span&gt;
+  &lt;span class="n1-track"&gt;&lt;span class="n1-knob"&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;/button&gt;</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.1.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/chimera-ui.js"></script>
+<script>ChimeraUI.attach(document);</script>
+</body>
+</html>

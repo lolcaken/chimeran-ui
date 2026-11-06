@@ -1,0 +1,7 @@
+
+/* Segmented chips: wrap, never clip. */
+.n1-chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px;padding:7px;border-radius:11px;border:1px solid var(--n1-stroke);background:linear-gradient(180deg,var(--n1-el),var(--n1-el2));box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.n1-chip{height:24px;padding:0 9px;border-radius:999px;border:1px solid rgba(255,255,255,.11);background:#1b1b1b;color:#c9c9c9;font:inherit;font-size:10.5px;font-weight:600;letter-spacing:.02em;cursor:pointer;transition:border-color .16s ease,color .16s ease,background .16s ease,transform .1s ease}
+.n1-chip:hover{border-color:rgba(255,255,255,.26);color:#fff}
+.n1-chip:active{transform:scale(.96)}
+.n1-chip.on{color:#eafff6;border-color:rgba(32,201,144,.6);background:linear-gradient(180deg,rgba(23,153,110,.5),rgba(23,153,110,.22));box-shadow:0 0 12px rgba(32,201,144,.18)}

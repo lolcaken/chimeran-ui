@@ -1,0 +1,8 @@
+
+/* Initial patch, gradient, 26px. */
+.n1-avatar{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:10px;font-weight:700;letter-spacing:.02em;color:#eafff6;background:linear-gradient(135deg,rgba(23,153,110,.85),rgba(32,201,144,.35));border:1px solid rgba(32,201,144,.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
+.n1-avatar.n1-avatar-alt{background:linear-gradient(135deg,#2b2b2b,#3a3a3a);border-color:rgba(255,255,255,.14);color:#e6e6e6}
+.n1-user{display:flex;align-items:center;gap:9px;min-width:0}
+.n1-user .n1-user-main{min-width:0;display:flex;flex-direction:column}
+.n1-user .n1-user-main b{font-size:11.5px;color:#fff;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.n1-user .n1-user-main span{font-size:10px;color:var(--n1-dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

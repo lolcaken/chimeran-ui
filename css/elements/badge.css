@@ -1,0 +1,8 @@
+
+/* Count / status pill. */
+.n1-badge{display:inline-flex;align-items:center;gap:4px;height:18px;padding:0 7px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:#1b1b1b;color:#c9c9c9;font-size:9.5px;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+.n1-badge.on{color:#eafff6;border-color:rgba(32,201,144,.5);background:rgba(23,153,110,.28)}
+.n1-badge.warn{color:#ffe6c2;border-color:rgba(240,168,60,.5);background:rgba(240,168,60,.16)}
+.n1-badge.error{color:#ffd9d9;border-color:rgba(240,75,75,.5);background:rgba(240,75,75,.16)}
+.n1-dot-live{width:5px;height:5px;border-radius:50%;background:var(--n1-accent-edge);box-shadow:0 0 6px var(--n1-accent-edge);animation:n1-pulse 2s ease-in-out infinite}
+@keyframes n1-pulse{0%,100%{opacity:.45;box-shadow:0 0 0 0 var(--n1-accent-edge)}50%{opacity:1;box-shadow:0 0 8px 2px var(--n1-accent)}}

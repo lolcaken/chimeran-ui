@@ -1,0 +1,14 @@
+
+/* Collapsible card. Head is a button; body animates open. */
+.n1-card{border:1px solid rgba(255,255,255,.07);border-radius:13px;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0));margin:0 0 7px;overflow:hidden}
+.n1-card-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;border:none;background:transparent;color:var(--n1-dim);font:inherit;font-size:10.5px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;cursor:pointer;user-select:none;transition:color .16s ease}
+.n1-card-head:hover{color:#e8e8e8}
+.n1-card-head .n1-ic{display:inline-flex;color:var(--n1-faint);transition:transform .18s ease;transform:rotate(90deg)}
+.n1-card.collapsed .n1-card-head .n1-ic{transform:rotate(0)}
+.n1-card-body{padding:0 8px 6px;display:flex;flex-direction:column}
+.n1-card-body:empty{display:none}
+.n1-card-body .n1-note{padding:6px 4px 0}
+.n1-card.collapsed .n1-card-body{display:none}
+.n1-card.collapsed{background:rgba(255,255,255,.012)}
+.n1-card-body{animation:n1-card-in .18s ease both}
+@keyframes n1-card-in{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}

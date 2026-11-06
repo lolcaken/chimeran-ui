@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keybind — ChimeraUI</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/elements/keybind.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Inputs">Inputs</a><span>/</span>Keybind</nav>
+  <h1 class="cu-title">Keybind</h1>
+  <p class="cu-lede">A chip that captures the next key. While capturing it turns amber and swallows the event, so the page never sees the binding.</p>
+  <div class="cu-label">Chips</div>
+  <div class="cu-card">
+    <div class="cu-row">
+      <span class="n1-key">F1</span>
+      <span class="n1-key bind">press&hellip;</span>
+      <span class="n1-key disabled">Unbound</span>
+    </div>
+  </div>
+  <div class="cu-label">Live</div>
+  <div class="cu-stage">
+    <button class="n1-key" style="min-width:96px">Click to bind</button>
+  </div>
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet">&lt;span class="n1-key"&gt;F1&lt;/span&gt;
+&lt;span class="n1-key bind"&gt;press&amp;hellip;&lt;/span&gt;
+&lt;button class="n1-key"&gt;Click to bind&lt;/button&gt;</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.1.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/chimera-ui.js"></script>
+<script>ChimeraUI.attach(document);</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search — ChimeraUI</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/elements/search.css">
+  <link rel="stylesheet" href="../css/elements/icon-button.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Inputs">Inputs</a><span>/</span>Search</nav>
+  <h1 class="cu-title">Search</h1>
+  <p class="cu-lede">A field with a leading glyph and a clear button. The clear button only resets the value; filtering is the consumer’s job.</p>
+  <div class="cu-label">Field</div>
+  <div class="cu-stage">
+    <div class="n1-search">
+      <span class="n1-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg></span>
+      <input class="n1-input" placeholder="Search elements">
+      <button class="n1-clear" aria-label="clear">&times;</button>
+    </div>
+  </div>
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet">&lt;div class="n1-search"&gt;
+  &lt;span class="n1-ic"&gt;&lt;svg viewBox="0 0 24 24"&gt;...&lt;/svg&gt;&lt;/span&gt;
+  &lt;input class="n1-input" placeholder="Search elements"&gt;
+  &lt;button class="n1-clear" aria-label="clear"&gt;&amp;times;&lt;/button&gt;
+&lt;/div&gt;</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.1.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/chimera-ui.js"></script>
+<script>ChimeraUI.attach(document);</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+
+/* Specification list: tight rows, hairline separators, tabular values. */
+.n1-spec{display:flex;flex-direction:column;gap:1px;padding:7px 13px 0;font-size:10px;line-height:1.5;color:var(--n1-dim)}
+.n1-spec-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:2.5px 0;border-bottom:1px solid rgba(255,255,255,.045)}
+.n1-spec-row:last-child{border-bottom:none}
+.n1-spec-row b{color:#dcdcdc;font-weight:600;white-space:nowrap}
+.n1-spec-row span{text-align:right;font-variant-numeric:tabular-nums;color:var(--n1-faint);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.n1-spec-head{margin-bottom:2px}
+.n1-spec-head b{color:#fff}
+.n1-spec-head span{color:var(--n1-dim);font-size:9px}

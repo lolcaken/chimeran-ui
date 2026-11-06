@@ -1,0 +1,5 @@
+
+/* Anchored panel: wider than the menu, holds fields. */
+.n1-popover{position:absolute;z-index:2147483007;width:250px;padding:11px;border-radius:13px;border:1px solid rgba(255,255,255,.11);background:linear-gradient(180deg,#171717,#0e0e0e);box-shadow:0 22px 54px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.05);animation:n1-dialog-in .18s cubic-bezier(.2,1.2,.4,1) both}
+.n1-popover-title{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--n1-dim);margin:0 0 8px}
+.n1-anchor{position:relative;display:inline-flex}

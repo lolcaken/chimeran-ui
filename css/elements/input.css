@@ -1,0 +1,9 @@
+
+/* Text field. 34px, radius 9, focus ring on the stroke only. */
+.n1-field{display:flex;flex-direction:column;gap:5px;margin-bottom:6px}
+.n1-field>span{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--n1-dim)}
+.n1-input{width:100%;height:34px;padding:0 10px;border-radius:9px;border:1px solid #2e2e2e;background:#161616;color:#f2f2f2;font:inherit;font-size:12px;outline:none;transition:border-color .16s ease,background .16s ease}
+.n1-input::placeholder{color:#6f6f6f}
+.n1-input:hover{border-color:#3a3a3a}
+.n1-input:focus{border-color:var(--n1-accent-edge);background:#181818}
+.n1-input:disabled{opacity:.5;cursor:not-allowed}

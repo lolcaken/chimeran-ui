@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Context menu — ChimeraUI</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/elements/menu.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Overlays">Overlays</a><span>/</span>Context menu</nav>
+  <h1 class="cu-title">Context menu</h1>
+  <p class="cu-lede">180–220px floating menu, 30px rows, hairline separators, one danger row. Position it yourself; the kit supplies the surface.</p>
+  <div class="cu-label">Surface</div>
+  <div class="cu-card" style="position:relative;height:190px">
+    <div class="n1-menu" style="left:12px;top:12px">
+      <button class="n1-menu-item"><span class="n1-ic">+</span>New profile<kbd>Ctrl N</kbd></button>
+      <button class="n1-menu-item"><span class="n1-ic">&#8599;</span>Duplicate</button>
+      <div class="n1-menu-sep"></div>
+      <button class="n1-menu-item danger"><span class="n1-ic">&times;</span>Delete</button>
+    </div>
+  </div>
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet">&lt;div class="n1-menu"&gt;
+  &lt;button class="n1-menu-item"&gt;New profile &lt;kbd&gt;Ctrl N&lt;/kbd&gt;&lt;/button&gt;
+  &lt;div class="n1-menu-sep"&gt;&lt;/div&gt;
+  &lt;button class="n1-menu-item danger"&gt;Delete&lt;/button&gt;
+&lt;/div&gt;</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.1.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/chimera-ui.js"></script>
+<script>ChimeraUI.attach(document);</script>
+</body>
+</html>

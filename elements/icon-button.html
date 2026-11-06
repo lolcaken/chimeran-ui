@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Icon button — ChimeraUI</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/elements/icon-button.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Buttons">Buttons</a><span>/</span>Icon button</nav>
+  <h1 class="cu-title">Icon button</h1>
+  <p class="cu-lede">24px square, radius 7, 14px glyph. Sits in the titlebar or in any row that needs a compact action. The close variant is the only red hover in the set.</p>
+  <div class="cu-label">Sizes</div>
+  <div class="cu-card">
+    <div class="cu-row">
+      <button class="n1-icon" aria-label="settings"><span class="n1-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span></button>
+      <button class="n1-icon n1-lg" aria-label="settings large"><span class="n1-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span></button>
+      <button class="n1-icon n1-close" aria-label="close"><span class="n1-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 6 6 18M6 6l12 12"/></svg></span></button>
+    </div>
+  </div>
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet">&lt;button class="n1-icon" aria-label="settings"&gt;
+  &lt;span class="n1-ic"&gt;&lt;svg viewBox="0 0 24 24"&gt;...&lt;/svg&gt;&lt;/span&gt;
+&lt;/button&gt;
+&lt;button class="n1-icon n1-lg"&gt;&amp;#8230;&lt;/button&gt;
+&lt;button class="n1-icon n1-close"&gt;&amp;#8230;&lt;/button&gt;</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.1.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/chimera-ui.js"></script>
+<script>ChimeraUI.attach(document);</script>
+</body>
+</html>

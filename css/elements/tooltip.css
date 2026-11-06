@@ -1,0 +1,5 @@
+
+/* CSS-only tooltip on data-tip. Never clipped: position above, wrap at 200px. */
+.n1-tip{position:relative;display:inline-flex}
+.n1-tip[data-tip]::after{content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 7px);transform:translate(-50%,3px);z-index:5;max-width:200px;width:max-content;padding:5px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:#0d0d0d;color:#e6e6e6;font-size:10px;font-weight:500;line-height:1.35;letter-spacing:0;text-transform:none;white-space:normal;box-shadow:0 10px 24px rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .14s ease,transform .14s ease}
+.n1-tip[data-tip]:hover::after,.n1-tip[data-tip]:focus-visible::after{opacity:1;transform:translate(-50%,0)}

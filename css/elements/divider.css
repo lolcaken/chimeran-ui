@@ -1,0 +1,6 @@
+
+/* Hairline, optionally labelled. */
+.n1-divider{display:flex;align-items:center;gap:9px;margin:10px 0;color:var(--n1-faint);font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.n1-divider::before,.n1-divider::after{content:'';flex:1 1 0;height:1px;background:rgba(255,255,255,.07)}
+.n1-divider:empty::before{flex:1 1 0}
+.n1-divider:empty::after{display:none}

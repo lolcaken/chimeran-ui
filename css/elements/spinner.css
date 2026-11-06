@@ -1,0 +1,6 @@
+
+/* 16px ring, 1.6px stroke, 0.8s. */
+.n1-spinner{width:16px;height:16px;border-radius:50%;border:1.6px solid rgba(255,255,255,.14);border-top-color:var(--n1-accent-edge);animation:n1-spin .8s linear infinite;flex:none}
+.n1-spinner.n1-lg{width:24px;height:24px;border-width:2px}
+.n1-loading{display:flex;align-items:center;gap:9px;font-size:11px;color:var(--n1-dim)}
+@keyframes n1-spin{to{transform:rotate(360deg)}}

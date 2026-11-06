@@ -1,0 +1,7 @@
+
+/* Native select, styled to the panel's control radius. */
+.n1-select{min-width:108px;max-width:150px;background:#161616;color:#eee;border:1px solid #333;border-radius:8px;padding:4px 6px;font:inherit;font-size:11px;outline:none;transition:border-color .16s ease}
+.n1-select:hover{border-color:#414141}
+.n1-select:focus-visible{border-color:var(--n1-accent-edge)}
+.n1-select option{background:#161616;color:#eee}
+.n1-rowctl{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:42px;padding:8px 11px;margin-bottom:6px;border-radius:11px;border:1px solid var(--n1-stroke);background:linear-gradient(180deg,var(--n1-el),var(--n1-el2))}

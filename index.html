@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChimeraUI — a userscript UI kit</title>
+<meta name="description" content="ChimeraUI is a dependency-free panel kit for userscripts: 35 elements, one stylesheet, shadow-DOM safe.">
+<link rel="stylesheet" href="./css/chimera-ui.css">
+</head>
+<body class="n1-root">
+
+<main class="cu-page">
+  <header>
+    <h1 class="cu-title">ChimeraUI</h1>
+    <p class="cu-lede">A dependency-free panel kit for <b>userscripts</b>. 35 elements, one stylesheet, one 9&nbsp;kB behaviour file. Built to live inside a shadow root on somebody else&rsquo;s page, so every rule is scoped and nothing assumes it owns the document.</p>
+  </header>
+
+  <!-- ============================================================ the panel -->
+  <div class="cu-stage">
+    <section id="n1-panel" aria-label="ChimeraUI demo panel">
+      <div class="n1-head">
+        <div class="n1-title">ChimeraUI<span class="n1-sub">0.1.0 &middot; demo panel</span></div>
+        <div class="n1-actions">
+          <button class="n1-icon" aria-label="settings"><span class="n1-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span></button>
+          <button class="n1-icon n1-close" aria-label="close"><span class="n1-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 6 6 18M6 6l12 12"/></svg></span></button>
+        </div>
+      </div>
+
+      <div class="n1-tabs" data-cn="tabs" role="tablist" aria-label="Demo sections">
+        <button class="n1-tab" role="tab" aria-selected="true" data-cn-tab="buttons">Buttons</button>
+        <button class="n1-tab" role="tab" aria-selected="false" data-cn-tab="inputs">Inputs</button>
+        <button class="n1-tab" role="tab" aria-selected="false" data-cn-tab="feedback">Feedback</button>
+        <button class="n1-tab" role="tab" aria-selected="false" data-cn-tab="data">Data</button>
+        <button class="n1-tab" role="tab" aria-selected="false" data-cn-tab="overlays">Overlays</button>
+      </div>
+
+      <div class="n1-main">
+        <div class="n1-main-inner">
+          <div class="n1-stage">
+
+            <div class="n1-pane" data-cn-pane="buttons">
+              <div class="n1-section">Rows</div>
+              <button class="n1-el n1-action"><span class="n1-label">Apply profile</span><span class="n1-ic">&#8250;</span></button>
+              <button class="n1-el"><span class="n1-label">Export configuration</span><span class="n1-badge">JSON</span></button>
+              <div class="n1-section">Variants</div>
+              <button class="n1-el n1-primary"><span class="n1-label">Primary</span></button>
+              <button class="n1-el n1-danger"><span class="n1-label">Danger</span></button>
+              <button class="n1-el n1-ghost"><span class="n1-label">Ghost</span></button>
+              <button class="n1-el" disabled><span class="n1-label">Disabled</span></button>
+              <div class="n1-section">Icons</div>
+              <div class="n1-duo">
+                <button class="n1-el n1-sm"><span class="n1-label">Small</span></button>
+                <button class="n1-el n1-sm"><span class="n1-label">Small</span></button>
+              </div>
+              <button class="n1-bypass" style="margin-top:8px"><span>Destructive row</span><span class="n1-bypass-state">OFF</span></button>
+            </div>
+
+            <div class="n1-pane" data-cn-pane="inputs">
+              <div class="n1-section">Controls</div>
+              <button class="n1-toggle on" data-cn="toggle"><span class="n1-label">Wall check</span><span class="n1-track"><span class="n1-knob"></span></span></button>
+              <div class="n1-slider" data-cn-dec="0" data-cn-unit="&deg;">
+                <div class="n1-slider-top"><span>Field of view</span><span class="n1-slider-val" data-cn-value>90&deg;</span></div>
+                <input class="n1-range" type="range" min="10" max="180" value="90">
+              </div>
+              <div class="n1-chips" data-cn-multi="true">
+                <button class="n1-chip on">ESP</button><button class="n1-chip on">Chams</button><button class="n1-chip">Snaplines</button><button class="n1-chip">Radar</button>
+              </div>
+              <label class="n1-field"><span>Display name</span><input class="n1-input" placeholder="chef"></label>
+              <div class="n1-rowctl"><span class="n1-label">Quality</span><select class="n1-select"><option>High</option><option>Medium</option></select></div>
+              <div class="n1-section">Values</div>
+              <div class="n1-stepper" data-cn="stepper" data-cn-min="1" data-cn-max="10" data-cn-value-now="3">
+                <span class="n1-label">Profiles</span>
+                <span class="n1-stepper-controls"><button data-cn-dir="down" aria-label="decrease">&minus;</button><span class="n1-value" data-cn-value>3</span><button data-cn-dir="up" aria-label="increase">+</button></span>
+              </div>
+              <div class="n1-search"><span class="n1-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg></span><input class="n1-input" placeholder="Search"><button class="n1-clear" aria-label="clear">&times;</button></div>
+              <div class="n1-color"><span class="n1-label">Accent</span><code>#17996e</code><span class="n1-swatch"><input type="color" value="#17996e"></span></div>
+            </div>
+
+            <div class="n1-pane" data-cn-pane="feedback">
+              <div class="n1-section">Inline</div>
+              <div class="n1-alert"><span><b>Heads up</b>Profile migrated from an older schema.</span></div>
+              <div class="n1-alert warn"><span><b>Clamped</b>Values above the cap are reduced.</span></div>
+              <div class="n1-progress-row"><div class="n1-progress"><i style="width:62%"></i></div><span>62%</span></div>
+              <div class="n1-progress n1-indeterminate"><i></i></div>
+              <div class="n1-section">Live</div>
+              <button class="n1-el" data-cn-toast="Saved" data-cn-title="Saved" data-cn-msg="Configuration written to storage."><span class="n1-label">Fire a toast</span><span class="n1-badge on"><i class="n1-dot-live"></i>live</span></button>
+              <div class="n1-loading" style="margin:10px 2px"><span class="n1-spinner"></span>Working&hellip;</div>
+              <div class="n1-skeleton n1-row"></div>
+              <div class="n1-skeleton n1-line"></div>
+              <div class="n1-skeleton n1-line" style="width:55%"></div>
+            </div>
+
+            <div class="n1-pane" data-cn-pane="data">
+              <div class="n1-section">Stats</div>
+              <div class="n1-stat"><span class="n1-stat-label">Frames</span><span class="n1-stat-value">12 884</span></div>
+              <div class="n1-stat"><span class="n1-stat-label">Bridge</span><span class="n1-stat-value">live</span></div>
+              <div class="n1-section">List</div>
+              <div class="n1-list">
+                <div class="n1-list-row"><span class="n1-avatar">AK</span><span class="n1-list-main"><b>Profiles</b><span>3 saved</span></span><span class="n1-list-meta">3</span><span class="n1-chev">&#8250;</span></div>
+                <div class="n1-list-row"><span class="n1-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span><span class="n1-list-main"><b>Logs</b><span>Session only</span></span><span class="n1-chev">&#8250;</span></div>
+              </div>
+              <div class="n1-section">Table</div>
+              <table class="n1-table">
+                <thead><tr><th>Element</th><th>Class</th><th class="n1-num">Size</th></tr></thead>
+                <tbody><tr><td>Button</td><td>.n1-el</td><td class="n1-num">42</td></tr><tr><td>Toggle</td><td>.n1-toggle</td><td class="n1-num">42</td></tr></tbody>
+              </table>
+              <div class="n1-divider">Advanced</div>
+              <div class="n1-spec"><div class="n1-spec-row n1-spec-head"><b>ChimeraUI</b><span>0.1.0</span></div><div class="n1-spec-row"><b>Surface</b><span>458 px</span></div></div>
+            </div>
+
+            <div class="n1-pane" data-cn-pane="overlays">
+              <div class="n1-section">Surfaces</div>
+              <button class="n1-el" data-cn-open="modal"><span class="n1-label">Open dialog</span><span class="n1-ic">&#8250;</span></button>
+              <button class="n1-el" data-cn-open="drawer"><span class="n1-label">Open drawer</span><span class="n1-ic">&#8250;</span></button>
+              <div class="n1-section">Floating</div>
+              <div class="cu-card" style="height:186px;position:relative;padding:0;background:none;border:0">
+                <div class="n1-menu" style="left:0;top:0">
+                  <button class="n1-menu-item"><span class="n1-ic">+</span>New profile<kbd>Ctrl N</kbd></button>
+                  <button class="n1-menu-item"><span class="n1-ic">&#8599;</span>Duplicate</button>
+                  <div class="n1-menu-sep"></div>
+                  <button class="n1-menu-item danger"><span class="n1-ic">&times;</span>Delete</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="n1-fade"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============================================================== index -->
+  <h2 class="cu-label" id="Buttons">Buttons</h2>
+  <ul class="cu-index">
+    <li><a href="./elements/button.html">Button<i>42 px</i></a></li>
+    <li><a href="./elements/icon-button.html">Icon button<i>24 px</i></a></li>
+    <li><a href="./elements/bypass.html">Destructive row<i>38 px</i></a></li>
+  </ul>
+
+  <h2 class="cu-label" id="Inputs">Inputs</h2>
+  <ul class="cu-index">
+    <li><a href="./elements/toggle.html">Toggle<i>switch</i></a></li>
+    <li><a href="./elements/slider.html">Slider<i>range</i></a></li>
+    <li><a href="./elements/select.html">Select<i>native</i></a></li>
+    <li><a href="./elements/chips.html">Chips<i>segmented</i></a></li>
+    <li><a href="./elements/input.html">Input<i>text</i></a></li>
+    <li><a href="./elements/textarea.html">Textarea<i>multi</i></a></li>
+    <li><a href="./elements/checkbox.html">Checkbox<i>16 px</i></a></li>
+    <li><a href="./elements/radio.html">Radio<i>16 px</i></a></li>
+    <li><a href="./elements/stepper.html">Stepper<i>numeric</i></a></li>
+    <li><a href="./elements/search.html">Search<i>field</i></a></li>
+    <li><a href="./elements/keybind.html">Keybind<i>capture</i></a></li>
+    <li><a href="./elements/color.html">Colour<i>swatch</i></a></li>
+  </ul>
+
+  <h2 class="cu-label" id="Feedback">Feedback</h2>
+  <ul class="cu-index">
+    <li><a href="./elements/toast.html">Toast<i>stack</i></a></li>
+    <li><a href="./elements/alert.html">Alert<i>inline</i></a></li>
+    <li><a href="./elements/progress.html">Progress<i>bar</i></a></li>
+    <li><a href="./elements/spinner.html">Spinner<i>ring</i></a></li>
+    <li><a href="./elements/skeleton.html">Skeleton<i>shimmer</i></a></li>
+    <li><a href="./elements/badge.html">Badge<i>pill</i></a></li>
+    <li><a href="./elements/tooltip.html">Tooltip<i>css</i></a></li>
+  </ul>
+
+  <h2 class="cu-label" id="Data">Data</h2>
+  <ul class="cu-index">
+    <li><a href="./elements/stat.html">Stat<i>row</i></a></li>
+    <li><a href="./elements/spec.html">Spec list<i>dense</i></a></li>
+    <li><a href="./elements/table.html">Table<i>fixed</i></a></li>
+    <li><a href="./elements/list.html">List row<i>44 px</i></a></li>
+    <li><a href="./elements/avatar.html">Avatar<i>26 px</i></a></li>
+    <li><a href="./elements/kbd.html">Keyboard cap<i>kbd</i></a></li>
+    <li><a href="./elements/code.html">Code block<i>mono</i></a></li>
+    <li><a href="./elements/divider.html">Divider<i>hairline</i></a></li>
+    <li><a href="./elements/empty.html">Empty state<i>dashed</i></a></li>
+  </ul>
+
+  <h2 class="cu-label" id="Overlays">Overlays</h2>
+  <ul class="cu-index">
+    <li><a href="./elements/modal.html">Modal<i>dialog</i></a></li>
+    <li><a href="./elements/drawer.html">Drawer<i>sheet</i></a></li>
+    <li><a href="./elements/menu.html">Context menu<i>180 px</i></a></li>
+    <li><a href="./elements/popover.html">Popover<i>250 px</i></a></li>
+  </ul>
+
+  <footer class="cu-foot">
+    <span>MIT &middot; ChimeraUI 0.1.0</span>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+    <a href="./css/chimera-ui.css">Stylesheet</a>
+    <a href="./js/chimera-ui.js">Behaviour</a>
+  </footer>
+</main>
+
+<!-- ---- overlay surfaces owned by the demo ---- -->
+<div class="n1-modal" hidden>
+  <div class="n1-dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title">
+    <div class="n1-dialog-title" id="dlg-title"><span class="n1-dialog-glyph">!</span>Delete profile?</div>
+    <div class="n1-dialog-body">This removes the saved configuration and cannot be undone.</div>
+    <div class="n1-dialog-actions">
+      <button class="n1-dialog-btn" data-cn-close>Cancel</button>
+      <button class="n1-dialog-btn danger" data-cn-close>Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="n1-drawer" hidden>
+  <div class="n1-drawer-head"><b style="font-size:13px">Profiles</b><button class="n1-dialog-btn" style="flex:none;width:32px;height:26px" data-cn-close>&times;</button></div>
+  <div class="n1-drawer-body"><div class="n1-list"><div class="n1-list-row"><span class="n1-list-main"><b>Default</b><span>Built in</span></span><span class="n1-chev">&#8250;</span></div></div></div>
+  <div class="n1-drawer-foot"><button class="n1-dialog-btn" data-cn-close>Close</button></div>
+</div>
+
+<script src="./js/chimera-ui.js"></script>
+<script>
+  ChimeraUI.attach(document);
+  // demo affordance: press T for a toast, so the stack is reachable without a trigger
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 't' || e.key === 'T') {
+      if (e.target && /input|textarea|select/i.test(e.target.tagName)) return;
+      ChimeraUI.toast(document, { title: 'ChimeraUI', message: 'Insert a toast from anywhere.', duration: 3200 });
+    }
+  });
+</script>
+</body>
+</html>

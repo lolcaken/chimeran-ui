@@ -1,0 +1,6 @@
+
+/* Read-only stat row: dim label left, white value right. */
+.n1-stat{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:40px;padding:8px 11px;margin-bottom:6px;border-radius:11px;border:1px solid #262626;background:#191919;box-shadow:inset 0 1px 0 rgba(255,255,255,.02);transition:border-color .18s ease,background .18s ease}
+.n1-stat:hover{border-color:#333;background:#1c1c1c}
+.n1-stat-label{font-size:10px;color:var(--n1-dim);font-weight:500;flex:none}
+.n1-stat-value{font-size:11.5px;color:#fff;font-weight:500;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}

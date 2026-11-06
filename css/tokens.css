@@ -1,0 +1,14 @@
+
+/* ============================================================================
+   ChimeraUI — tokens
+   The palette and type stack are lifted verbatim from the ChimeraN panel.
+   Do not add colours here. Every component resolves through these vars.
+   ============================================================================ */
+.n1-root{
+  direction:ltr;unicode-bidi:isolate;
+  --n1-window:#0b0b0b;--n1-el:#1f1f1f;--n1-el2:#252525;--n1-stroke:#2e2e2e;--n1-stroke-hover:#414141;
+  --n1-text:#f2f2f2;--n1-dim:#8a8a8a;--n1-faint:#6f6f6f;--n1-accent:#17996e;--n1-accent-edge:#20c990;
+  --n1-error:#f04b4b;--n1-warn:#f0a83c;
+  font:12px/1.35 "Builder Sans","Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,sans-serif;
+  color:var(--n1-text);-webkit-font-smoothing:antialiased;
+}
