@@ -133,8 +133,7 @@ Every element has a standalone page with states, markup, and a live demo.
 | [Keybind](elements/keybind.html) | Captures the next key |
 | [Colour](elements/color.html) | Native colour input in a swatch |
 
-![Slider](docs/img/slider.png)
-![Toggle](docs/img/toggle.png)
+![Inputs](docs/img/panel-inputs.png)
 
 ### Feedback
 
@@ -148,7 +147,7 @@ Every element has a standalone page with states, markup, and a live demo.
 | [Badge](elements/badge.html) | Count and status pills |
 | [Tooltip](elements/tooltip.html) | CSS-only on `data-tip` |
 
-![Alert](docs/img/alert.png)
+![Feedback](docs/img/panel-feedback.png)
 ![Badge](docs/img/badge.png)
 
 ### Data
