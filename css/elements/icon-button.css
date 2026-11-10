@@ -3,6 +3,5 @@
 .n1-icon{width:24px;height:24px;padding:0;display:inline-flex;align-items:center;justify-content:center;color:#c9c9c9;background:transparent;border:none;border-radius:7px;cursor:pointer;transition:background .16s ease,color .16s ease}
 .n1-icon:hover{background:rgba(255,255,255,.08);color:#fff}
 .n1-icon.n1-close:hover{background:rgba(240,75,75,.18);color:#ff9a9a}
-.n1-ic svg{width:14px;height:14px;display:block}
 .n1-icon.n1-lg{width:30px;height:30px;border-radius:9px}
 .n1-icon.n1-lg .n1-ic svg{width:16px;height:16px}

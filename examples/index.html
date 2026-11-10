@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Example panel — ChimeraUI</title>
+<link rel="stylesheet" href="../css/docs.css">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<style>
+  /* Keep the demo copy clear of the fixed panel on wide screens. */
+  @media (min-width: 960px) {
+    .cu-page { max-width: 900px; margin: 0; padding: 30px 30px 64px 520px; }
+  }
+</style>
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span>Example</nav>
+  <h1 class="cu-title">Example userscript panel</h1>
+  <p class="cu-lede">This is <code>examples/userscript.user.js</code> running exactly as a userscript would, against the built bundle. Five tabs, icons in the rail, a dropdown, a modal, a drawer and a toast stack. Edit <code>TITLE</code> and <code>SUBTITLE</code> at the top of that file to rename the panel.</p>
+  <div class="cu-label">Source</div>
+  <pre class="cu-snippet">&lt;script src="../dist/chimeraui.js"&gt;&lt;/script&gt;
+&lt;script src="./userscript.user.js"&gt;&lt;/script&gt;</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.2.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="../examples/userscript.user.js">The userscript</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../dist/chimeraui.js"></script>
+<script src="./userscript.user.js"></script>
+</body>
+</html>

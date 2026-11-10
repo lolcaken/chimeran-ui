@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ChimeraUI — a userscript UI kit</title>
-<meta name="description" content="ChimeraUI is a dependency-free panel kit for userscripts: 35 elements, one stylesheet, shadow-DOM safe.">
+<meta name="description" content="ChimeraUI is a dependency-free panel kit for userscripts: 37 components, 65 icons, one stylesheet, shadow-DOM safe.">
+<link rel="stylesheet" href="./css/docs.css">
 <link rel="stylesheet" href="./css/chimera-ui.css">
 </head>
 <body class="n1-root">
@@ -12,14 +13,14 @@
 <main class="cu-page">
   <header>
     <h1 class="cu-title">ChimeraUI</h1>
-    <p class="cu-lede">A dependency-free panel kit for <b>userscripts</b>. 35 elements, one stylesheet, one 9&nbsp;kB behaviour file. Built to live inside a shadow root on somebody else&rsquo;s page, so every rule is scoped and nothing assumes it owns the document.</p>
+    <p class="cu-lede">A dependency-free panel kit for <b>userscripts</b>. 37 components, 65 icons, one stylesheet, one behaviour file. Built to live inside a shadow root on somebody else&rsquo;s page, so every rule is scoped and nothing assumes it owns the document. Edit the title, add a tab, ship. <a href="./guide.html">Read the guide &rarr;</a></p>
   </header>
 
   <!-- ============================================================ the panel -->
   <div class="cu-stage">
     <section id="n1-panel" aria-label="ChimeraUI demo panel">
       <div class="n1-head">
-        <div class="n1-title">ChimeraUI<span class="n1-sub">0.1.0 &middot; demo panel</span></div>
+        <div class="n1-title">ChimeraUI<span class="n1-sub">0.2.0 &middot; demo panel</span></div>
         <div class="n1-actions">
           <button class="n1-icon" aria-label="settings"><span class="n1-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span></button>
           <button class="n1-icon n1-close" aria-label="close"><span class="n1-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 6 6 18M6 6l12 12"/></svg></span></button>
@@ -27,11 +28,11 @@
       </div>
 
       <div class="n1-tabs" data-cn="tabs" role="tablist" aria-label="Demo sections">
-        <button class="n1-tab" role="tab" aria-selected="true" data-cn-tab="buttons">Buttons</button>
-        <button class="n1-tab" role="tab" aria-selected="false" data-cn-tab="inputs">Inputs</button>
-        <button class="n1-tab" role="tab" aria-selected="false" data-cn-tab="feedback">Feedback</button>
-        <button class="n1-tab" role="tab" aria-selected="false" data-cn-tab="data">Data</button>
-        <button class="n1-tab" role="tab" aria-selected="false" data-cn-tab="overlays">Overlays</button>
+        <button class="n1-tab" role="tab" aria-selected="true" data-cn-tab="buttons"><span class="n1-ic" data-cn-icon="grid"></span><span>Buttons</span></button>
+        <button class="n1-tab" role="tab" aria-selected="false" data-cn-tab="inputs"><span class="n1-ic" data-cn-icon="sliders"></span><span>Inputs</span></button>
+        <button class="n1-tab" role="tab" aria-selected="false" data-cn-tab="feedback" data-cn-sep><span class="n1-ic" data-cn-icon="bell"></span><span>Feedback</span></button>
+        <button class="n1-tab" role="tab" aria-selected="false" data-cn-tab="data"><span class="n1-ic" data-cn-icon="database"></span><span>Data</span></button>
+        <button class="n1-tab" role="tab" aria-selected="false" data-cn-tab="overlays" data-cn-sep><span class="n1-ic" data-cn-icon="layers"></span><span>Overlays</span></button>
       </div>
 
       <div class="n1-main">
@@ -57,16 +58,27 @@
 
             <div class="n1-pane" data-cn-pane="inputs">
               <div class="n1-section">Controls</div>
-              <button class="n1-toggle on" data-cn="toggle"><span class="n1-label">Wall check</span><span class="n1-track"><span class="n1-knob"></span></span></button>
-              <div class="n1-slider" data-cn-dec="0" data-cn-unit="&deg;">
-                <div class="n1-slider-top"><span>Field of view</span><span class="n1-slider-val" data-cn-value>90&deg;</span></div>
-                <input class="n1-range" type="range" min="10" max="180" value="90">
+              <button class="n1-toggle on" data-cn="toggle"><span class="n1-label">Compact mode</span><span class="n1-track"><span class="n1-knob"></span></span></button>
+              <div class="n1-slider" data-cn-dec="0" data-cn-unit="%">
+                <div class="n1-slider-top"><span>Panel opacity</span><span class="n1-slider-val" data-cn-value>90%</span></div>
+                <input class="n1-range" type="range" min="10" max="100" value="90">
               </div>
               <div class="n1-chips" data-cn-multi="true">
-                <button class="n1-chip on">ESP</button><button class="n1-chip on">Chams</button><button class="n1-chip">Snaplines</button><button class="n1-chip">Radar</button>
+                <button class="n1-chip on">Auto-run</button><button class="n1-chip on">Hotkeys</button><button class="n1-chip">Badge</button><button class="n1-chip">Sounds</button>
               </div>
               <label class="n1-field"><span>Display name</span><input class="n1-input" placeholder="chef"></label>
-              <div class="n1-rowctl"><span class="n1-label">Quality</span><select class="n1-select"><option>High</option><option>Medium</option></select></div>
+              <div class="n1-dd" data-cn="select" data-value="high">
+                <button class="n1-dd-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="n1-label">Quality</span>
+                  <span class="n1-dd-value"><span>High</span><span class="n1-dd-chev" data-cn-icon="chevron-down"></span></span>
+                </button>
+                <div class="n1-dd-menu" role="listbox" aria-label="Quality" hidden>
+                  <button class="n1-dd-item" type="button" role="option" aria-selected="true" data-value="high"><span>High</span><span class="n1-dd-check" data-cn-icon="check"></span></button>
+                  <button class="n1-dd-item" type="button" role="option" aria-selected="false" data-value="medium"><span>Medium</span><span class="n1-dd-check" data-cn-icon="check"></span></button>
+                  <button class="n1-dd-item" type="button" role="option" aria-selected="false" data-value="low"><span>Low</span><span class="n1-dd-check" data-cn-icon="check"></span></button>
+                  <button class="n1-dd-item" type="button" role="option" aria-selected="false" data-value="off"><span>Off</span><span class="n1-dd-check" data-cn-icon="check"></span></button>
+                </div>
+              </div>
               <div class="n1-section">Values</div>
               <div class="n1-stepper" data-cn="stepper" data-cn-min="1" data-cn-max="10" data-cn-value-now="3">
                 <span class="n1-label">Profiles</span>
@@ -91,9 +103,14 @@
             </div>
 
             <div class="n1-pane" data-cn-pane="data">
-              <div class="n1-section">Stats</div>
-              <div class="n1-stat"><span class="n1-stat-label">Frames</span><span class="n1-stat-value">12 884</span></div>
-              <div class="n1-stat"><span class="n1-stat-label">Bridge</span><span class="n1-stat-value">live</span></div>
+              <div class="n1-section">Details</div>
+              <div class="n1-card">
+                <button class="n1-card-head" type="button">Stats<span class="n1-ic" data-cn-icon="chevron"></span></button>
+                <div class="n1-card-body">
+                  <div class="n1-stat"><span class="n1-stat-label">Requests</span><span class="n1-stat-value">12 884</span></div>
+                  <div class="n1-stat"><span class="n1-stat-label">Status</span><span class="n1-stat-value">live</span></div>
+                </div>
+              </div>
               <div class="n1-section">List</div>
               <div class="n1-list">
                 <div class="n1-list-row"><span class="n1-avatar">AK</span><span class="n1-list-main"><b>Profiles</b><span>3 saved</span></span><span class="n1-list-meta">3</span><span class="n1-chev">&#8250;</span></div>
@@ -105,7 +122,7 @@
                 <tbody><tr><td>Button</td><td>.n1-el</td><td class="n1-num">42</td></tr><tr><td>Toggle</td><td>.n1-toggle</td><td class="n1-num">42</td></tr></tbody>
               </table>
               <div class="n1-divider">Advanced</div>
-              <div class="n1-spec"><div class="n1-spec-row n1-spec-head"><b>ChimeraUI</b><span>0.1.0</span></div><div class="n1-spec-row"><b>Surface</b><span>458 px</span></div></div>
+              <div class="n1-spec"><div class="n1-spec-row n1-spec-head"><b>ChimeraUI</b><span>0.2.0</span></div><div class="n1-spec-row"><b>Surface</b><span>458 px</span></div></div>
             </div>
 
             <div class="n1-pane" data-cn-pane="overlays">
@@ -143,6 +160,7 @@
     <li><a href="./elements/toggle.html">Toggle<i>switch</i></a></li>
     <li><a href="./elements/slider.html">Slider<i>range</i></a></li>
     <li><a href="./elements/select.html">Select<i>native</i></a></li>
+    <li><a href="./elements/dropdown.html">Dropdown<i>custom</i></a></li>
     <li><a href="./elements/chips.html">Chips<i>segmented</i></a></li>
     <li><a href="./elements/input.html">Input<i>text</i></a></li>
     <li><a href="./elements/textarea.html">Textarea<i>multi</i></a></li>
@@ -167,6 +185,7 @@
 
   <h2 class="cu-label" id="Data">Data</h2>
   <ul class="cu-index">
+    <li><a href="./elements/card.html">Card<i>collapse</i></a></li>
     <li><a href="./elements/stat.html">Stat<i>row</i></a></li>
     <li><a href="./elements/spec.html">Spec list<i>dense</i></a></li>
     <li><a href="./elements/table.html">Table<i>fixed</i></a></li>
@@ -178,6 +197,11 @@
     <li><a href="./elements/empty.html">Empty state<i>dashed</i></a></li>
   </ul>
 
+  <h2 class="cu-label" id="Icons">Icons</h2>
+  <ul class="cu-index">
+    <li><a href="./elements/icons.html">Icon sheet<i>63 glyphs</i></a></li>
+  </ul>
+
   <h2 class="cu-label" id="Overlays">Overlays</h2>
   <ul class="cu-index">
     <li><a href="./elements/modal.html">Modal<i>dialog</i></a></li>
@@ -187,8 +211,10 @@
   </ul>
 
   <footer class="cu-foot">
-    <span>MIT &middot; ChimeraUI 0.1.0</span>
+    <span>MIT &middot; ChimeraUI 0.2.0</span>
     <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+    <a href="./guide.html">Guide</a>
+    <a href="./examples/index.html">Example panel</a>
     <a href="./css/chimera-ui.css">Stylesheet</a>
     <a href="./js/chimera-ui.js">Behaviour</a>
   </footer>
@@ -212,6 +238,7 @@
   <div class="n1-drawer-foot"><button class="n1-dialog-btn" data-cn-close>Close</button></div>
 </div>
 
+<script src="./js/icons.js"></script>
 <script src="./js/chimera-ui.js"></script>
 <script>
   ChimeraUI.attach(document);

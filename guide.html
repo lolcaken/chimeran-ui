@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guide — ChimeraUI</title>
+<meta name="description" content="Install, set up and extend ChimeraUI: the n1- prefix, panel anatomy, tabs, icons, components, tokens and the full API.">
+<link rel="stylesheet" href="./css/tokens.css">
+<link rel="stylesheet" href="./css/base.css">
+<link rel="stylesheet" href="./css/chimera-ui.css">
+<link rel="stylesheet" href="./css/guide.css">
+</head>
+<body class="n1-root">
+
+<header class="gd-top">
+  <a class="gd-brand" href="./index.html">ChimeraUI <i>docs</i></a>
+  <nav>
+    <a href="./guide.html" aria-current="page">Guide</a>
+    <a href="./index.html">Elements</a>
+    <a href="./elements/icons.html">Icons</a>
+    <a href="./examples/index.html">Example</a>
+    <a class="gh" href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </nav>
+</header>
+
+<div class="gd-shell">
+  <aside class="gd-side">
+    <div class="n1-search">
+      <span class="n1-ic" data-cn-icon="search"></span>
+      <input class="n1-input" id="gd-filter" placeholder="Filter the guide" autocomplete="off">
+      <button class="n1-clear" type="button" aria-label="clear">&times;</button>
+    </div>
+    <nav class="gd-nav" id="gd-nav">
+      <b>Start</b>
+      <a href="#install">Install</a>
+      <a href="#setup">Setup</a>
+      <a href="#prefix">Prefix &amp; scope</a>
+      <b>Anatomy</b>
+      <a href="#structure">Panel structure</a>
+      <a href="#tabs">Tabs</a>
+      <a href="#icons">Icons</a>
+      <a href="#components">Components</a>
+      <b>Patterns</b>
+      <a href="#dropdown">Dropdown</a>
+      <a href="#cards">Cards</a>
+      <a href="#overlays">Overlays</a>
+      <b>Reference</b>
+      <a href="#theming">Theming</a>
+      <a href="#api">API</a>
+      <a href="#build">Build &amp; test</a>
+      <a href="#a11y">Accessibility</a>
+    </nav>
+  </aside>
+
+  <main class="gd-main">
+    <section class="gd-hero" id="top">
+      <div class="gd-eyebrow"><span class="n1-ic n1-ic-sm" data-cn-icon="box"></span>Documentation · v0.2.0</div>
+      <h1>Build a panel that lives on somebody else&rsquo;s page.</h1>
+      <p>ChimeraUI is 37 components and 65 icons in plain CSS, one optional behaviour file, and a fixed panel width. It is scoped so it cannot restyle the host, and it is small enough to ship inside a userscript with a single <code>@require</code>.</p>
+      <div class="gd-cta">
+        <a class="gd-btn primary" href="#install"><span class="n1-ic n1-ic-sm" data-cn-icon="download"></span>Install</a>
+        <a class="gd-btn" href="./examples/index.html"><span class="n1-ic n1-ic-sm" data-cn-icon="external"></span>Live example</a>
+        <a class="gd-btn" href="https://github.com/lolcaken/chimeran-ui"><span class="n1-ic n1-ic-sm" data-cn-icon="code"></span>Source</a>
+      </div>
+    </section>
+
+    <section class="gd-sec" id="install">
+      <h2><span class="num">01</span>Install</h2>
+      <p>There are two ways in. A userscript should take the bundle: it carries the stylesheet, the icon set and the behaviour file in one request. A plain page can link the CSS and skip the JavaScript entirely.</p>
+
+      <h3>Userscript — one <code>@require</code></h3>
+      <div class="gd-code">
+        <header>userscript header</header>
+        <pre>// ==UserScript==
+// @name         My Panel
+// @namespace    me
+// @version      1.0.0
+// @match        *://example.com/*
+// @require      https://cdn.jsdelivr.net/gh/lolcaken/chimeran-ui@v0.2.0/dist/chimeraui.js
+// @grant        none
+// ==/UserScript==</pre>
+      </div>
+      <p>The bundle exposes <code>window.ChimeraUI</code> with the CSS string attached, so <code>mount()</code> never needs a second request.</p>
+
+      <h3>Plain stylesheet</h3>
+      <div class="gd-code">
+        <header>html</header>
+        <pre>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lolcaken/chimeran-ui@v0.2.0/css/chimera-ui.css"&gt;
+&lt;body class="n1-root"&gt; ... &lt;/body&gt;</pre>
+      </div>
+      <p>Without the behaviour file you write your own handlers. Every component is markup first; the CSS never depends on JavaScript.</p>
+
+      <h3>From source</h3>
+      <div class="gd-code">
+        <header>bash</header>
+        <pre>git clone https://github.com/lolcaken/chimeran-ui
+cd chimeran-ui
+npm install        # playwright, for the overflow gate
+node build.mjs     # -> dist/chimeraui.css, dist/chimeraui.js
+npm test           # 41 pages at 320 / 458 / 1280 px</pre>
+      </div>
+      <div class="gd-call">
+        <span class="n1-ic" data-cn-icon="info"></span>
+        <span><b>No runtime dependencies</b>The bundle is plain CSS plus one IIFE. Nothing is fetched after the initial request, and nothing touches the host page.</span>
+      </div>
+    </section>
+
+    <section class="gd-sec" id="setup">
+      <h2><span class="num">02</span>Setup</h2>
+      <p><code>mount()</code> creates a fixed host, attaches a shadow root, injects the stylesheet and markup, appends it to the page, and wires every behaviour. It returns the host and the shadow root.</p>
+
+      <ol class="gd-steps">
+        <li><b>Write the panel markup.</b> One root <code>#n1-panel</code>, a head, a tab rail, a main region, and one pane per tab.</li>
+        <li><b>Load the bundle.</b> Either the <code>@require</code> above or <code>&lt;script src="dist/chimeraui.js"&gt;</code>.</li>
+        <li><b>Call <code>mount()</code>.</b> Pass the markup, the title and the subtitle. Everything else has a default.</li>
+        <li><b>Listen for events.</b> <code>cn:change</code>, <code>cn:tab</code>, <code>cn:open</code> and <code>cn:close</code> bubble out of the shadow root.</li>
+      </ol>
+
+      <div class="gd-code">
+        <header>js</header>
+        <pre>const PANEL = `
+&lt;div id="n1-panel"&gt;
+  &lt;div class="n1-head"&gt;
+    &lt;div class="n1-title"&gt;ChimeraUI&lt;span class="n1-sub"&gt;0.2.0&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="n1-actions"&gt;
+      &lt;button class="n1-icon n1-close" aria-label="close"&gt;
+        &lt;span class="n1-ic" data-cn-icon="x"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="n1-tabs" data-cn="tabs" role="tablist"&gt;
+    &lt;button class="n1-tab" role="tab" aria-selected="true" data-cn-tab="main"&gt;
+      &lt;span class="n1-ic" data-cn-icon="home"&gt;&lt;/span&gt;&lt;span&gt;Main&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="n1-main"&gt;&lt;div class="n1-main-inner"&gt;&lt;div class="n1-stage"&gt;
+    &lt;div class="n1-pane" data-cn-pane="main"&gt;
+      &lt;button class="n1-toggle on" data-cn="toggle"&gt;
+        &lt;span class="n1-label"&gt;Enabled&lt;/span&gt;
+        &lt;span class="n1-track"&gt;&lt;span class="n1-knob"&gt;&lt;/span&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;`;
+
+const { host, root } = ChimeraUI.mount({
+  html: PANEL,
+  title: 'My Panel',
+  subtitle: 'v1.0.0 · userscript',
+});</pre>
+      </div>
+
+      <p>Rename the panel later without re-mounting:</p>
+      <div class="gd-code">
+        <header>js</header>
+        <pre>ChimeraUI.title(root, 'Page Tools', 'v1.2 · nightly');
+// subtitle is optional; pass '' to remove the line
+ChimeraUI.title(root, 'Page Tools');
+ChimeraUI.title(root, 'Page Tools', '');</pre>
+      </div>
+
+      <div class="gd-call">
+        <span class="n1-ic" data-cn-icon="alert"></span>
+        <span><b>The host starts invisible to the page</b><code>mount()</code> uses <code>pointer-events:none</code> on the host and re-enables it on the panel. Clicks pass through everywhere else. Give the panel a close action if the page needs its corners back.</span>
+      </div>
+    </section>
+
+    <section class="gd-sec" id="prefix">
+      <h2><span class="num">03</span>Prefix &amp; scope</h2>
+      <p>Every class in the kit starts with <code>n1-</code>. The prefix is the namespace contract: a userscript shares a document with an application it does not control, so class names have to be specific enough that no host rule collides with them.</p>
+      <div class="gd-tablewrap"><table class="gd-table">
+        <thead><tr><th>Prefix</th><th>Owner</th><th>Rule</th></tr></thead>
+        <tbody>
+          <tr><td><code>n1-</code></td><td>Library</td><td>Stable. Safe to target from your script.</td></tr>
+          <tr><td><code>cu-</code></td><td>Demo pages</td><td>Local to this repository. Never used by components.</td></tr>
+          <tr><td><code>gd-</code></td><td>This guide</td><td>Documentation chrome only.</td></tr>
+        </tbody>
+      </table></div>
+      <p>Component selectors are also scoped under <code>.n1-root</code>, so the stylesheet can be linked into a page without touching <code>body</code>, <code>html</code> or bare elements. Inside a shadow root the scoping is automatic; the outer <code>.n1-root</code> wrapper makes the same file safe in light DOM.</p>
+      <div class="gd-code">
+        <header>html — both environments</header>
+        <pre>&lt;!-- light DOM: one wrapper class does the scoping --&gt;
+&lt;link rel="stylesheet" href="css/chimera-ui.css"&gt;
+&lt;div class="n1-root"&gt; ...panel... &lt;/div&gt;
+
+&lt;!-- shadow DOM: mount() wraps the markup for you --&gt;
+ChimeraUI.mount({ html: PANEL });</pre>
+      </div>
+      <div class="gd-call warn">
+        <span class="n1-ic" data-cn-icon="shield"></span>
+        <span><b>One stylesheet per page</b>Loading <code>chimera-ui.css</code> twice doubles every rule. The bundle already carries it; do not also link it when using <code>@require</code>.</span>
+      </div>
+    </section>
+
+    <section class="gd-sec" id="structure">
+      <h2><span class="num">04</span>Panel structure</h2>
+      <p>The panel is a fixed-width column. The head and the tab rail never scroll; the active pane does. That keeps the close control reachable and stops a long list from pushing the panel past the viewport.</p>
+      <div class="gd-tablewrap"><table class="gd-table">
+        <thead><tr><th>Part</th><th>Class</th><th>Metric</th></tr></thead>
+        <tbody>
+          <tr><td>Panel</td><td><code>#n1-panel</code></td><td>458 px · radius 20 · <code>max-height:calc(100vh - 18px)</code></td></tr>
+          <tr><td>Head</td><td><code>.n1-head</code></td><td>Drag handle · title + action cluster</td></tr>
+          <tr><td>Rail</td><td><code>.n1-tabs</code></td><td>31 px pills · no wrap · wheel/drag scroll</td></tr>
+          <tr><td>Pane</td><td><code>.n1-pane</code></td><td>410 px · 4 px scrollbar · <code>overscroll-behavior:contain</code></td></tr>
+          <tr><td>Row</td><td><code>.n1-el</code></td><td>42 px · radius 11 · label left, value right</td></tr>
+        </tbody>
+      </table></div>
+      <div class="gd-code">
+        <header>html — skeleton</header>
+        <pre>&lt;div id="n1-panel"&gt;
+  &lt;div class="n1-head"&gt;...title + actions...&lt;/div&gt;
+  &lt;div class="n1-tabs" data-cn="tabs" role="tablist"&gt;...tabs...&lt;/div&gt;
+  &lt;div class="n1-main"&gt;
+    &lt;div class="n1-main-inner"&gt;
+      &lt;div class="n1-stage"&gt;
+        &lt;div class="n1-pane" data-cn-pane="main"&gt;...content...&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="n1-fade"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+      <p>The head is draggable by default: the behaviour binds pointer events to <code>.n1-head</code> and ignores buttons inside it. Position is not persisted; store it yourself if the panel should remember where it was.</p>
+    </section>
+
+    <section class="gd-sec" id="tabs">
+      <h2><span class="num">05</span>Tabs</h2>
+      <p>A tab is a button with a role, its own icon, and its own label. The rail distributes the available width across the tabs; once they no longer fit, it stops shrinking them and becomes a scroll rail instead. Wheel, trackpad and grab-drag all move it, and a trailing click after a drag is swallowed so the rail never selects the wrong tab.</p>
+      <div class="gd-code">
+        <header>html</header>
+        <pre>&lt;div class="n1-tabs" data-cn="tabs" role="tablist" aria-label="Sections"&gt;
+  &lt;button class="n1-tab" role="tab" aria-selected="true" data-cn-tab="home"&gt;
+    &lt;span class="n1-ic" data-cn-icon="home"&gt;&lt;/span&gt;&lt;span&gt;Home&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;button class="n1-tab" role="tab" data-cn-tab="logs" data-cn-sep&gt;
+    &lt;span class="n1-ic" data-cn-icon="terminal"&gt;&lt;/span&gt;&lt;span&gt;Logs&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</pre>
+      </div>
+      <div class="gd-tablewrap"><table class="gd-table">
+        <thead><tr><th>Attribute</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><code>data-cn-tab="id"</code></td><td>Pairs the tab with <code>[data-cn-pane="id"]</code>.</td></tr>
+          <tr><td><code>data-cn-sep</code></td><td>Inserts a divider before this tab.</td></tr>
+          <tr><td><code>style="--tab-accent:#f0a83c"</code></td><td>Changes the active glyph colour for this tab only.</td></tr>
+          <tr><td><code>aria-controls="pane-id"</code></td><td>Optional; also resolves the pane when ids differ.</td></tr>
+        </tbody>
+      </table></div>
+      <p>Keyboard: <b>Left/Right</b> moves between tabs, <b>Home/End</b> jumps to the ends. The selected tab receives focus, so the tablist is one stop in the page tab order.</p>
+    </section>
+
+    <section class="gd-sec" id="icons">
+      <h2><span class="num">06</span>Icons</h2>
+      <p>65 glyphs, one geometry: a 24×24 viewBox, 2 px stroke, round caps and joins, no fills. They are decorative by default; the container is sized by CSS, so the same glyph works at 12 px in a tab and 22 px in an empty state.</p>
+      <div class="gd-grid">
+        <span class="gd-tile"><b><span class="n1-ic n1-ic-lg" data-cn-icon="home"></span> home</b><span>navigation</span></span>
+        <span class="gd-tile"><b><span class="n1-ic n1-ic-lg" data-cn-icon="sliders"></span> sliders</b><span>settings</span></span>
+        <span class="gd-tile"><b><span class="n1-ic n1-ic-lg" data-cn-icon="database"></span> database</b><span>data</span></span>
+        <span class="gd-tile"><b><span class="n1-ic n1-ic-lg" data-cn-icon="terminal"></span> terminal</b><span>logs</span></span>
+        <span class="gd-tile"><b><span class="n1-ic n1-ic-lg" data-cn-icon="shield"></span> shield</b><span>security</span></span>
+        <span class="gd-tile"><b><span class="n1-ic n1-ic-lg" data-cn-icon="gear"></span> gear</b><span>settings</span></span>
+      </div>
+      <div class="gd-code">
+        <header>html — markup first</header>
+        <pre>&lt;span class="n1-ic" data-cn-icon="gear"&gt;&lt;/span&gt;
+&lt;span class="n1-ic n1-ic-lg" data-cn-icon="database"&gt;&lt;/span&gt;</pre>
+      </div>
+      <div class="gd-code">
+        <header>js — same registry</header>
+        <pre>ChimeraUI.iconNames          // ['aim', 'eye', 'move', ...]
+ChimeraUI.svg('gear')        // SVG string, for templates
+ChimeraUI.icon('gear')       // &lt;span class="n1-ic"&gt; element</pre>
+      </div>
+      <div class="gd-tablewrap"><table class="gd-table">
+        <thead><tr><th>Class</th><th>Glyph size</th></tr></thead>
+        <tbody>
+          <tr><td><code>.n1-ic</code></td><td>14 px</td></tr>
+          <tr><td><code>.n1-ic-sm</code></td><td>12 px</td></tr>
+          <tr><td><code>.n1-ic-lg</code></td><td>18 px</td></tr>
+          <tr><td><code>.n1-ic-xl</code></td><td>22 px</td></tr>
+        </tbody>
+      </table></div>
+      <p><a href="./elements/icons.html">Open the full sheet</a> to search, preview and copy any of the 65 names.</p>
+    </section>
+
+    <section class="gd-sec" id="components">
+      <h2><span class="num">07</span>Components</h2>
+      <p>Every component has a standalone page with states, markup and a live demo. Link only the element stylesheet you need, or take the aggregate file.</p>
+      <div class="gd-grid">
+        <a class="gd-tile" href="./elements/button.html"><b>Button</b><span>42 px row · 5 variants</span></a>
+        <a class="gd-tile" href="./elements/icon-button.html"><b>Icon button</b><span>24 px · close variant</span></a>
+        <a class="gd-tile" href="./elements/bypass.html"><b>Destructive row</b><span>the one red surface</span></a>
+        <a class="gd-tile" href="./elements/toggle.html"><b>Toggle</b><span>34 × 18 track</span></a>
+        <a class="gd-tile" href="./elements/slider.html"><b>Slider</b><span>live readout</span></a>
+        <a class="gd-tile" href="./elements/select.html"><b>Select</b><span>native select</span></a>
+        <a class="gd-tile" href="./elements/dropdown.html"><b>Dropdown</b><span>animated list</span></a>
+        <a class="gd-tile" href="./elements/chips.html"><b>Chips</b><span>single or multi</span></a>
+        <a class="gd-tile" href="./elements/input.html"><b>Input</b><span>34 px field</span></a>
+        <a class="gd-tile" href="./elements/textarea.html"><b>Textarea</b><span>multi-line</span></a>
+        <a class="gd-tile" href="./elements/checkbox.html"><b>Checkbox</b><span>16 px · CSS tick</span></a>
+        <a class="gd-tile" href="./elements/radio.html"><b>Radio</b><span>16 px ring</span></a>
+        <a class="gd-tile" href="./elements/stepper.html"><b>Stepper</b><span>bounded numeric</span></a>
+        <a class="gd-tile" href="./elements/search.html"><b>Search</b><span>glyph + clear</span></a>
+        <a class="gd-tile" href="./elements/keybind.html"><b>Keybind</b><span>captures next key</span></a>
+        <a class="gd-tile" href="./elements/color.html"><b>Colour</b><span>native swatch</span></a>
+        <a class="gd-tile" href="./elements/card.html"><b>Card</b><span>collapsible group</span></a>
+        <a class="gd-tile" href="./elements/stat.html"><b>Stat</b><span>label / value</span></a>
+        <a class="gd-tile" href="./elements/spec.html"><b>Spec list</b><span>dense metadata</span></a>
+        <a class="gd-tile" href="./elements/table.html"><b>Table</b><span>fixed layout</span></a>
+        <a class="gd-tile" href="./elements/list.html"><b>List row</b><span>icon · two lines</span></a>
+        <a class="gd-tile" href="./elements/avatar.html"><b>Avatar</b><span>26 px initials</span></a>
+        <a class="gd-tile" href="./elements/kbd.html"><b>Keyboard cap</b><span>inline kbd</span></a>
+        <a class="gd-tile" href="./elements/code.html"><b>Code block</b><span>monospace</span></a>
+        <a class="gd-tile" href="./elements/divider.html"><b>Divider</b><span>hairline · label</span></a>
+        <a class="gd-tile" href="./elements/empty.html"><b>Empty state</b><span>dashed frame</span></a>
+        <a class="gd-tile" href="./elements/toast.html"><b>Toast</b><span>timed stack</span></a>
+        <a class="gd-tile" href="./elements/alert.html"><b>Alert</b><span>inline tones</span></a>
+        <a class="gd-tile" href="./elements/progress.html"><b>Progress</b><span>determinate</span></a>
+        <a class="gd-tile" href="./elements/spinner.html"><b>Spinner</b><span>16 / 24 px</span></a>
+        <a class="gd-tile" href="./elements/skeleton.html"><b>Skeleton</b><span>shimmer</span></a>
+        <a class="gd-tile" href="./elements/badge.html"><b>Badge</b><span>count · status</span></a>
+        <a class="gd-tile" href="./elements/tooltip.html"><b>Tooltip</b><span>CSS only</span></a>
+        <a class="gd-tile" href="./elements/modal.html"><b>Modal</b><span>scrim + dialog</span></a>
+        <a class="gd-tile" href="./elements/drawer.html"><b>Drawer</b><span>floating right sheet</span></a>
+        <a class="gd-tile" href="./elements/menu.html"><b>Context menu</b><span>floating list</span></a>
+        <a class="gd-tile" href="./elements/popover.html"><b>Popover</b><span>anchored panel</span></a>
+      </div>
+    </section>
+
+    <section class="gd-sec" id="dropdown">
+      <h2><span class="num">08</span>Dropdown</h2>
+      <p>The custom select is a 42 px trigger plus a floating listbox. The list is placed with fixed coordinates, so it escapes a clipped scroll pane, and it flips above the trigger when there is not enough room below. Rows carry a check on the selected value.</p>
+      <div class="gd-code">
+        <header>html</header>
+        <pre>&lt;div class="n1-dd" data-cn="select" data-value="high"&gt;
+  &lt;input type="hidden" name="quality" value="high"&gt;
+  &lt;button class="n1-dd-btn" type="button" aria-haspopup="listbox" aria-expanded="false"&gt;
+    &lt;span class="n1-label"&gt;Quality&lt;/span&gt;
+    &lt;span class="n1-dd-value"&gt;
+      &lt;span&gt;High&lt;/span&gt;
+      &lt;span class="n1-dd-chev" data-cn-icon="chevron-down"&gt;&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="n1-dd-menu" role="listbox" aria-label="Quality" hidden&gt;
+    &lt;button class="n1-dd-item" role="option" aria-selected="true" data-value="high"&gt;
+      &lt;span&gt;High&lt;/span&gt;&lt;span class="n1-dd-check" data-cn-icon="check"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="n1-dd-item" role="option" aria-selected="false" data-value="low"&gt;
+      &lt;span&gt;Low&lt;/span&gt;&lt;span class="n1-dd-check" data-cn-icon="check"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+      <p>The picked value is written to <code>data-value</code>, to the hidden input, and to the visible label. The component emits <code>cn:change</code> with <code>{ value, label }</code>. Keyboard: arrows move the active row, Enter/Space selects, Escape closes, Tab closes the list.</p>
+      <div class="gd-call">
+        <span class="n1-ic" data-cn-icon="info"></span>
+        <span><b>Native select is still there</b>Use <code>.n1-select</code> when you want zero JavaScript. The custom dropdown exists for the animated surface and the check column.</span>
+      </div>
+    </section>
+
+    <section class="gd-sec" id="cards">
+      <h2><span class="num">09</span>Cards</h2>
+      <p>A card groups rows under an uppercase head. The head is a button, the chevron turns with the state, and <code>aria-expanded</code> is kept in sync by the behaviour. This is the collapsible group used for <b>Players</b>, <b>World</b> and similar blocks.</p>
+      <div class="gd-code">
+        <header>html</header>
+        <pre>&lt;div class="n1-card"&gt;
+  &lt;button class="n1-card-head" type="button"&gt;
+    Players
+    &lt;span class="n1-ic" data-cn-icon="chevron"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="n1-card-body"&gt;
+    &lt;button class="n1-toggle on" data-cn="toggle"&gt;
+      &lt;span class="n1-label"&gt;Show names&lt;/span&gt;
+      &lt;span class="n1-track"&gt;&lt;span class="n1-knob"&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+      <p>Add <code>collapsed</code> to start shut. The body is display-toggled, so a collapsed card contributes only its head to the scroll height.</p>
+    </section>
+
+    <section class="gd-sec" id="overlays">
+      <h2><span class="num">10</span>Overlays</h2>
+      <p>Modal, drawer and toast share one contract. A trigger carries <code>data-cn-open="modal"</code> or <code>"drawer"</code>; anything inside the overlay with <code>data-cn-close</code> closes it; Escape and a scrim click close the modal. Both surfaces animate in <i>and</i> out — the node stays mounted for the exit animation and is hidden after it finishes.</p>
+      <div class="gd-code">
+        <header>html — modal + drawer + toast</header>
+        <pre>&lt;button class="n1-el" data-cn-open="modal"&gt;Open dialog&lt;/button&gt;
+&lt;div class="n1-modal" hidden&gt;
+  &lt;div class="n1-dialog" role="dialog" aria-modal="true"&gt;
+    &lt;div class="n1-dialog-title"&gt;Clear data?&lt;/div&gt;
+    &lt;div class="n1-dialog-body"&gt;This cannot be undone.&lt;/div&gt;
+    &lt;div class="n1-dialog-actions"&gt;
+      &lt;button class="n1-dialog-btn" data-cn-close&gt;Cancel&lt;/button&gt;
+      &lt;button class="n1-dialog-btn danger" data-cn-close&gt;Clear&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;button class="n1-el" data-cn-open="drawer"&gt;Open drawer&lt;/button&gt;
+&lt;div class="n1-drawer" hidden&gt;...head, body, foot...&lt;/div&gt;
+
+&lt;button class="n1-el" data-cn-toast="Saved" data-cn-title="Saved"
+        data-cn-msg="Written to storage."&gt;Fire a toast&lt;/button&gt;</pre>
+      </div>
+      <div class="gd-tablewrap"><table class="gd-table">
+        <thead><tr><th>Surface</th><th>Geometry</th><th>Exit</th></tr></thead>
+        <tbody>
+          <tr><td>Modal</td><td>330 px dialog · 16 px radius</td><td>fade-out 160 ms</td></tr>
+          <tr><td>Drawer</td><td>320 px cap · 18 px radius · 10 px inset</td><td>slide-out 240 ms</td></tr>
+          <tr><td>Toast</td><td>310 px stack · 11 px radius</td><td>slide + fade 200 ms</td></tr>
+        </tbody>
+      </table></div>
+      <div class="gd-call">
+        <span class="n1-ic" data-cn-icon="clock"></span>
+        <span><b>Exit before hide</b>The close path removes <code>.open</code>, adds <code>.out</code>, dispatches <code>cn:close</code>, then sets <code>hidden</code> after the animation window. Reopening clears the pending timer.</span>
+      </div>
+    </section>
+
+    <section class="gd-sec" id="theming">
+      <h2><span class="num">11</span>Theming</h2>
+      <p>All colour comes from eleven custom properties declared on <code>.n1-root</code>. Change them there and every component follows; never edit a component file for a palette change.</p>
+      <div class="gd-tablewrap"><table class="gd-table">
+        <thead><tr><th>Token</th><th>Default</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td><code>--n1-window</code></td><td><code>#0b0b0b</code></td><td>Panel base</td></tr>
+          <tr><td><code>--n1-el</code> / <code>--n1-el2</code></td><td><code>#1f1f1f</code> / <code>#252525</code></td><td>Row gradient</td></tr>
+          <tr><td><code>--n1-stroke</code></td><td><code>#2e2e2e</code></td><td>Idle border</td></tr>
+          <tr><td><code>--n1-stroke-hover</code></td><td><code>#414141</code></td><td>Hover border</td></tr>
+          <tr><td><code>--n1-text</code></td><td><code>#f2f2f2</code></td><td>Body copy</td></tr>
+          <tr><td><code>--n1-dim</code></td><td><code>#8a8a8a</code></td><td>Secondary copy</td></tr>
+          <tr><td><code>--n1-faint</code></td><td><code>#6f6f6f</code></td><td>Meta, icons</td></tr>
+          <tr><td><code>--n1-accent</code></td><td><code>#17996e</code></td><td>Fill, toggle on</td></tr>
+          <tr><td><code>--n1-accent-edge</code></td><td><code>#20c990</code></td><td>Focus, glow, values</td></tr>
+          <tr><td><code>--n1-error</code></td><td><code>#f04b4b</code></td><td>Destructive</td></tr>
+          <tr><td><code>--n1-warn</code></td><td><code>#f0a83c</code></td><td>Capture, warnings</td></tr>
+        </tbody>
+      </table></div>
+      <div class="gd-code">
+        <header>css — retint without touching a component</header>
+        <pre>.n1-root {
+  --n1-accent: #7c5cff;
+  --n1-accent-edge: #a58cff;
+}
+
+/* one tab, not the whole rail */
+.n1-tab[data-cn-tab="alerts"] { --tab-accent: #f0a83c; }</pre>
+      </div>
+      <p>Type is <code>12px/1.35 "Builder Sans","Segoe UI Variable Text","Segoe UI",system-ui</code>. Radii are 20 (panel), 13 (card), 11 (row), 9 (field), 7 (key). New components reuse those steps.</p>
+    </section>
+
+    <section class="gd-sec" id="api">
+      <h2><span class="num">12</span>API</h2>
+      <div class="gd-code">
+        <header>js — surface</header>
+        <pre>ChimeraUI.mount({ html, css?, id?, mode?, parent?, title?, subtitle? })
+  -> { host, root }
+
+ChimeraUI.attach(root)          // wire data-cn-* behaviours (idempotent)
+ChimeraUI.title(root, text, subtitle?)
+ChimeraUI.toast(root, { title, message, type, duration })
+ChimeraUI.tabs(root, box)       // manual tab controller
+ChimeraUI.icon(name)            // &lt;span class="n1-ic"&gt;
+ChimeraUI.svg(name)             // SVG string
+ChimeraUI.iconNames             // 65 names
+ChimeraUI.version               // '0.2.0'</pre>
+      </div>
+      <h3>Data attributes</h3>
+      <div class="gd-tablewrap"><table class="gd-table">
+        <thead><tr><th>Attribute</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><code>data-cn="tabs"</code></td><td>Tab rail: click, arrows, Home/End, panes</td></tr>
+          <tr><td><code>data-cn-tab</code> / <code>data-cn-pane</code></td><td>Matching tab and pane</td></tr>
+          <tr><td><code>data-cn-sep</code></td><td>Divider before a tab</td></tr>
+          <tr><td><code>data-cn-icon</code></td><td>Hydrates a <code>.n1-ic</code> span</td></tr>
+          <tr><td><code>data-cn="toggle"</code></td><td>Flips <code>.on</code> and <code>aria-pressed</code></td></tr>
+          <tr><td><code>data-cn="stepper"</code></td><td>Bounds via <code>data-cn-min/max/step</code></td></tr>
+          <tr><td><code>data-cn="select"</code></td><td>Custom dropdown; writes <code>data-value</code></td></tr>
+          <tr><td><code>data-cn-open="modal"</code> / <code>"drawer"</code></td><td>Opens the matching overlay</td></tr>
+          <tr><td><code>data-cn-close</code></td><td>Closes the containing overlay</td></tr>
+          <tr><td><code>data-cn-toast</code>, <code>-title</code>, <code>-msg</code>, <code>-type</code></td><td>Fires a toast on click</td></tr>
+          <tr><td><code>data-cn-copy</code></td><td>Copies a selector's text (or its own)</td></tr>
+          <tr><td><code>data-cn-multi</code></td><td>Multi-select chips</td></tr>
+          <tr><td><code>data-cn-unit</code> / <code>-dec</code></td><td>Slider readout format</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Events</h3>
+      <p><code>cn:change</code> (toggle, slider, stepper, chips, dropdown, keybind), <code>cn:tab</code>, <code>cn:open</code>, <code>cn:close</code>. All bubble, so one listener on the panel root catches everything.</p>
+      <div class="gd-code">
+        <header>js — one listener</header>
+        <pre>root.querySelector('#n1-panel').addEventListener('cn:change', (e) =&gt; {
+  console.log(e.target, e.detail);
+});</pre>
+      </div>
+    </section>
+
+    <section class="gd-sec" id="build">
+      <h2><span class="num">13</span>Build &amp; test</h2>
+      <p>The repository keeps source in <code>css/</code> and <code>js/</code>, and the generated single files in <code>dist/</code>. <code>build.mjs</code> reads the import list from <code>css/chimera-ui.css</code>, so the aggregate file is the only order to maintain.</p>
+      <div class="gd-code">
+        <header>bash</header>
+        <pre>node build.mjs       # minify + concatenate -> dist/chimeraui.css / .js
+npm test             # overflow gate: 41 pages × 3 widths
+git tag v0.2.0       # release snapshot for the CDN</pre>
+      </div>
+      <h3>Publishing the docs</h3>
+      <ol class="gd-steps">
+        <li><b>Push to <code>main</code>.</b> The guide, demo, element pages and example are all static files at the repository root.</li>
+        <li><b>Settings → Pages.</b> Source: <em>Deploy from a branch</em>, branch <code>main</code>, folder <code>/ (root)</code>.</li>
+        <li><b>Wait for the build.</b> The site lands at <code>https://lolcaken.github.io/chimeran-ui/</code>.</li>
+        <li><b>Tag a release.</b> jsDelivr resolves <code>@v0.2.0</code> from the tag, so pinned <code>@require</code> URLs stay reproducible.</li>
+      </ol>
+      <div class="gd-call">
+        <span class="n1-ic" data-cn-icon="refresh"></span>
+        <span><b>Bump both versions</b><code>package.json</code> and the <code>@version</code> in <code>build.mjs</code> move together. The CDN path is pinned to the tag, not to <code>main</code>.</span>
+      </div>
+    </section>
+
+    <section class="gd-sec" id="a11y">
+      <h2><span class="num">14</span>Accessibility</h2>
+      <ul>
+        <li>Tabs use <code>role="tab"</code> with roving <code>tabindex</code> and <code>aria-selected</code>; panes are the matching regions.</li>
+        <li>Toggles expose <code>aria-pressed</code>; dropdowns expose <code>aria-haspopup</code>, <code>aria-expanded</code> and <code>role="option"</code> with <code>aria-selected</code>.</li>
+        <li>Dialogs set <code>aria-modal</code>, move focus in, and close on Escape and scrim click.</li>
+        <li>Every interactive control has a visible <code>:focus-visible</code> ring; programmatic focus does not draw a phantom outline.</li>
+        <li><code>prefers-reduced-motion: reduce</code> disables every animation and transition in the kit.</li>
+        <li>Colour is never the only signal: badges carry text, alerts carry a heading, the dropdown marks selection with a check.</li>
+      </ul>
+      <div class="gd-call">
+        <span class="n1-ic" data-cn-icon="check"></span>
+        <span><b>The gate runs on every page</b><code>npm test</code> fails on horizontal document overflow and on any block that escapes the content column, at 320, 458 and 1280 px.</span>
+      </div>
+    </section>
+
+    <section class="gd-sec" id="next" style="padding-bottom:6px">
+      <h2 style="margin-bottom:6px">Ship it.</h2>
+      <p style="margin-bottom:16px">Copy the example, change two constants, and the panel is yours. Everything else is optional.</p>
+      <div class="gd-cta">
+        <a class="gd-btn primary" href="./examples/index.html"><span class="n1-ic n1-ic-sm" data-cn-icon="play"></span>Open the example</a>
+        <a class="gd-btn" href="./index.html"><span class="n1-ic n1-ic-sm" data-cn-icon="grid"></span>Browse components</a>
+      </div>
+    </section>
+
+
+
+
+
+  </main>
+</div>
+
+<footer class="gd-foot">
+  <span>MIT &middot; ChimeraUI 0.2.0 &middot; built for userscripts</span>
+  <span><a href="./index.html">Elements</a> &middot; <a href="./elements/icons.html">Icons</a> &middot; <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a></span>
+</footer>
+
+<script src="./js/icons.js"></script>
+<script src="./js/chimera-ui.js"></script>
+<script>
+(function () {
+  'use strict';
+  var root = document;
+
+  // Icon hydration + search clear + tabs, all from the kit.
+  ChimeraUI.attach(root);
+
+  // Copy buttons on every code block.
+  document.querySelectorAll('.gd-code').forEach(function (block) {
+    var pre = block.querySelector('pre');
+    var bar = block.querySelector('header');
+    if (!pre || !bar) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = 'Copy';
+    btn.addEventListener('click', function () {
+      var text = pre.textContent;
+      if (navigator.clipboard) navigator.clipboard.writeText(text).catch(function () {});
+      btn.textContent = 'Copied';
+      btn.classList.add('ok');
+      setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1400);
+    });
+    bar.appendChild(btn);
+  });
+
+  // Sidebar filter.
+  var filter = document.getElementById('gd-filter');
+  var links = Array.prototype.slice.call(document.querySelectorAll('#gd-nav a'));
+  filter.addEventListener('input', function () {
+    var term = filter.value.trim().toLowerCase();
+    links.forEach(function (a) {
+      a.classList.toggle('hidden', !!term && a.textContent.toLowerCase().indexOf(term) === -1);
+    });
+  });
+
+  // Active section in the rail.
+  var heads = Array.prototype.slice.call(document.querySelectorAll('.gd-sec[id]'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        links.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+        });
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    heads.forEach(function (h) { io.observe(h); });
+  }
+})();
+</script>
+</body>
+</html>

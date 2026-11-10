@@ -1,45 +1,16 @@
-
 /* ============================================================================
    ChimeraUI — base
-   Reset, focus, motion, and the page chrome used by the element demos.
-   The demo chrome is cu-* on purpose: it never collides with n1-* consumers.
+   Everything is scoped to .n1-root, so the kit can be linked into a document
+   without touching the host page, or injected into a shadow root unchanged.
    ============================================================================ */
-*,*::before,*::after{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;color:#f2f2f2;
-  background:radial-gradient(120% 80% at 50% 0%,#1c2228 0%,#12161a 46%,#0a0d0f 100%);
-  font:12px/1.35 "Builder Sans","Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,sans-serif;
-  -webkit-font-smoothing:antialiased;
-}
-a{color:var(--n1-accent-edge,#20c990);text-decoration:none}
-a:hover{text-decoration:underline}
-:focus-visible{outline:2px solid var(--n1-accent-edge,#20c990);outline-offset:2px}
-::selection{background:rgba(23,153,110,.45);color:#fff}
-
-/* ---- demo page chrome ---------------------------------------------------- */
-.cu-page{max-width:760px;margin:0 auto;padding:34px 20px 64px}
-.cu-crumb{display:flex;align-items:center;gap:8px;font-size:11px;color:#7e8a90;margin-bottom:18px}
-.cu-crumb a{color:#9aa6ac}
-.cu-crumb span{opacity:.45}
-.cu-title{font-size:26px;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 6px}
-.cu-lede{margin:0 0 22px;max-width:560px;font-size:12.5px;line-height:1.65;color:#8e9aa0}
-.cu-stage{width:458px;max-width:100%;margin:0 0 8px}
-.cu-stage #n1-panel{max-width:100%}
-.cu-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6f7a80;margin:22px 0 8px}
-.cu-card{border:1px solid rgba(255,255,255,.07);border-radius:13px;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0));padding:14px}
-.cu-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.cu-snippet{
-  margin:10px 0 0;padding:13px 14px;border-radius:12px;border:1px solid #242424;background:#0d0d0d;
-  color:#b9c6c2;font:11.5px/1.6 "Cascadia Mono","Consolas",ui-monospace,monospace;overflow:auto;white-space:pre;
-}
-.cu-snippet b{color:#5fe3b4;font-weight:600}
-.cu-foot{margin-top:40px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);font-size:11px;color:#66727a;display:flex;gap:14px;flex-wrap:wrap}
-.cu-index{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0 0;padding:0;list-style:none}
-.cu-index a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:38px;padding:0 11px;border-radius:10px;border:1px solid #262626;background:linear-gradient(180deg,#1b1b1b,#161616);color:#d8d8d8;font-size:11.5px;font-weight:500}
-.cu-index a:hover{border-color:#3a3a3a;color:#fff;text-decoration:none}
-.cu-index i{font-style:normal;color:#5a666c;font-size:10px;letter-spacing:.04em}
+.n1-root,.n1-root *,.n1-root *::before,.n1-root *::after{box-sizing:border-box}
+.n1-root{color:var(--n1-text,#f2f2f2);font:12px/1.35 "Builder Sans","Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.n1-root a{color:var(--n1-accent-edge,#20c990);text-decoration:none}
+.n1-root a:hover{text-decoration:underline}
+.n1-root :focus-visible{outline:2px solid var(--n1-accent-edge,#20c990);outline-offset:2px}
+.n1-root button:focus{outline:none}
+.n1-root ::selection{background:rgba(23,153,110,.45);color:#fff}
 
 @media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .n1-root *,.n1-root *::before,.n1-root *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Icon sheet — ChimeraUI</title>
+<link rel="stylesheet" href="../css/docs.css">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/elements/icon.css">
+<link rel="stylesheet" href="../css/elements/search.css">
+<link rel="stylesheet" href="../css/elements/input.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Icons">Icons</a><span>/</span>Icon sheet</nav>
+  <h1 class="cu-title">Icon sheet</h1>
+  <p class="cu-lede">Every glyph uses the panel geometry: a 24&times;24 viewBox, 2 px stroke, round caps and joins, no fills. Size comes from the container, so a glyph is 12 px in a tab, 14 px in a row and 18 px in a menu. Click a cell to copy its markup.</p>
+
+  <div class="cu-label">Filter</div>
+  <div class="n1-search" style="max-width:320px">
+    <span class="n1-ic" data-cn-icon="search"></span>
+    <input class="n1-input" id="icon-q" placeholder="Filter by name" autocomplete="off">
+    <button class="n1-clear" aria-label="clear">&times;</button>
+  </div>
+
+  <div class="cu-label">Glyphs &middot; <span id="icon-count"></span></div>
+  <div class="n1-icon-grid" id="icon-grid"></div>
+
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet" id="icon-snippet">&lt;span class="n1-ic" data-cn-icon="gear"&gt;&lt;/span&gt;</pre>
+
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.2.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/icons.js"></script>
+<script src="../js/chimera-ui.js"></script>
+<script>
+(function () {
+  'use strict';
+  var grid = document.getElementById('icon-grid');
+  var q = document.getElementById('icon-q');
+  var count = document.getElementById('icon-count');
+  var snippet = document.getElementById('icon-snippet');
+  var names = (window.ChimeraUI && ChimeraUI.iconNames) || [];
+
+  var markup = function (name) {
+    return '<span class="n1-ic" data-cn-icon="' + name + '"></span>';
+  };
+
+  names.forEach(function (name) {
+    var cell = document.createElement('button');
+    cell.type = 'button';
+    cell.className = 'n1-icon-cell';
+    cell.setAttribute('data-name', name);
+    cell.innerHTML = ChimeraUI.svg(name) + '<span>' + name + '</span>';
+    cell.addEventListener('click', function () {
+      snippet.textContent = markup(name);
+      if (navigator.clipboard) navigator.clipboard.writeText(markup(name)).catch(function () {});
+      cell.setAttribute('data-copied', '');
+      setTimeout(function () { cell.removeAttribute('data-copied'); }, 900);
+    });
+    grid.appendChild(cell);
+  });
+
+  var paint = function () {
+    var term = q.value.trim().toLowerCase();
+    var shown = 0;
+    grid.querySelectorAll('.n1-icon-cell').forEach(function (cell) {
+      var hit = !term || cell.getAttribute('data-name').indexOf(term) !== -1;
+      cell.hidden = !hit;
+      if (hit) shown++;
+    });
+    count.textContent = shown + ' of ' + names.length;
+  };
+  paint();
+  q.addEventListener('input', paint);
+
+  ChimeraUI.attach(document);
+})();
+</script>
+</body>
+</html>

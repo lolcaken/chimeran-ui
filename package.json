@@ -1,7 +1,7 @@
 {
   "name": "chimeran-ui",
-  "version": "0.1.0",
-  "description": "Dependency-free UI kit for userscripts: 35 elements, shadow-DOM safe, no overflow.",
+  "version": "0.2.0",
+  "description": "Dependency-free UI kit for userscripts: 37 components, 65 icons, shadow-DOM safe, no overflow.",
   "license": "MIT",
   "author": "lolcaken",
   "homepage": "https://github.com/lolcaken/chimeran-ui",
@@ -19,6 +19,7 @@
     "css",
     "js",
     "elements",
+    "examples",
     "index.html",
     "README.md",
     "LICENSE"

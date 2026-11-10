@@ -1,5 +1,5 @@
 
-/* Panel shell: 458px, radius 20, the same two-layer surface as the game panel. */
+/* Panel shell: 458px, radius 20, the two-layer surface used across the kit. */
 #n1-panel{
   position:relative;z-index:2147483000;width:458px;max-width:calc(100vw - 20px);
   max-height:calc(100vh - 18px);pointer-events:auto;

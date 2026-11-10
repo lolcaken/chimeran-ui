@@ -17,11 +17,13 @@ try {
 
 const pages = ['index.html'];
 for (const name of [
-  'button', 'icon-button', 'toggle', 'slider', 'select', 'chips', 'input', 'textarea',
-  'checkbox', 'radio', 'stepper', 'search', 'keybind', 'color', 'stat', 'spec', 'table',
+  'button', 'icon-button', 'toggle', 'slider', 'select', 'dropdown', 'chips', 'input', 'textarea',
+  'checkbox', 'radio', 'stepper', 'search', 'keybind', 'color', 'card', 'stat', 'spec', 'table',
   'list', 'avatar', 'kbd', 'code', 'divider', 'empty', 'toast', 'alert', 'progress',
   'spinner', 'skeleton', 'badge', 'tooltip', 'modal', 'drawer', 'menu', 'popover', 'bypass',
+  'icons',
 ]) pages.push('elements/' + name + '.html');
+pages.push('guide.html', 'examples/index.html');
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 900, height: 900 } });

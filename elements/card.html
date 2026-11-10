@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card — ChimeraUI</title>
+<link rel="stylesheet" href="../css/docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/elements/icon.css">
+  <link rel="stylesheet" href="../css/shell/card.css">
+  <link rel="stylesheet" href="../css/elements/toggle.css">
+  <link rel="stylesheet" href="../css/elements/stat.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Data">Data</a><span>/</span>Card</nav>
+  <h1 class="cu-title">Card</h1>
+  <p class="cu-lede">The collapsible group from the panel: an uppercase head, a chevron that turns, and a body that holds rows. Clicking the head toggles .collapsed; the behaviour keeps aria-expanded in sync.</p>
+  <div class="cu-label">Expanded</div>
+  <div class="cu-stage">
+    <div class="n1-card">
+      <button class="n1-card-head" type="button">Players<span class="n1-ic" data-cn-icon="chevron"></span></button>
+      <div class="n1-card-body">
+        <button class="n1-toggle on" type="button" data-cn="toggle"><span class="n1-label">Show names</span><span class="n1-track"><span class="n1-knob"></span></span></button>
+        <div class="n1-stat"><span class="n1-stat-label">Visible</span><span class="n1-stat-value">12</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cu-label">Collapsed</div>
+  <div class="cu-stage">
+    <div class="n1-card collapsed">
+      <button class="n1-card-head" type="button">World<span class="n1-ic" data-cn-icon="chevron"></span></button>
+      <div class="n1-card-body">
+        <div class="n1-stat"><span class="n1-stat-label">Region</span><span class="n1-stat-value">EU</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cu-label">Flat</div>
+  <div class="cu-stage">
+    <div class="n1-card" style="overflow:visible">
+      <div class="n1-card-body" style="padding:10px">
+        <div class="n1-stat" style="margin:0"><span class="n1-stat-label">Build</span><span class="n1-stat-value">0.2.0</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet">&lt;div class="n1-card"&gt;
+  &lt;button class="n1-card-head" type="button"&gt;
+    Players
+    &lt;span class="n1-ic" data-cn-icon="chevron"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="n1-card-body"&gt;
+    &lt;button class="n1-toggle on" data-cn="toggle"&gt;
+      &lt;span class="n1-label"&gt;Show names&lt;/span&gt;
+      &lt;span class="n1-track"&gt;&lt;span class="n1-knob"&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.1.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/chimera-ui.js"></script>
+<script>ChimeraUI.attach(document);</script>
+</body>
+</html>

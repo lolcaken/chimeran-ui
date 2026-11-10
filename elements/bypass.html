@@ -4,8 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Destructive row — ChimeraUI</title>
+<link rel="stylesheet" href="../css/docs.css">
 <link rel="stylesheet" href="../css/tokens.css">
 <link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/elements/icon.css">
   <link rel="stylesheet" href="../css/elements/bypass.css">
 </head>
 <body class="n1-root">
@@ -15,20 +17,21 @@
   <p class="cu-lede">The only red surface in the kit. 38px, red stroke, glow while active. Use it for the one action that cannot be undone.</p>
   <div class="cu-label">States</div>
   <div class="cu-stage">
-    <button class="n1-bypass"><span>Disable watchdog</span><span class="n1-bypass-state">OFF</span></button>
-    <button class="n1-bypass on" style="margin-top:8px"><span>Disable watchdog</span><span class="n1-bypass-state">ON</span></button>
+    <button class="n1-bypass"><span>Delete workspace</span><span class="n1-bypass-state">OFF</span></button>
+    <button class="n1-bypass on" style="margin-top:8px"><span>Delete workspace</span><span class="n1-bypass-state">ON</span></button>
   </div>
   <div class="cu-label">Markup</div>
   <pre class="cu-snippet">&lt;button class="n1-bypass"&gt;
-  &lt;span&gt;Disable watchdog&lt;/span&gt;
+  &lt;span&gt;Delete workspace&lt;/span&gt;
   &lt;span class="n1-bypass-state"&gt;OFF&lt;/span&gt;
 &lt;/button&gt;</pre>
   <footer class="cu-foot">
-    <span>ChimeraUI 0.1.0</span>
+    <span>ChimeraUI 0.2.0</span>
     <a href="../index.html">All elements</a>
     <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
   </footer>
 </main>
+<script src="../js/icons.js"></script>
 <script src="../js/chimera-ui.js"></script>
 <script>ChimeraUI.attach(document);</script>
 </body>

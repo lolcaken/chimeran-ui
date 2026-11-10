@@ -24,15 +24,16 @@ const parts = order.map((rel) => {
 });
 
 const css = parts.join('\n');
-const js = fs.readFileSync(path.join(root, 'js', 'chimera-ui.js'), 'utf8');
+const iconsJs = fs.readFileSync(path.join(root, 'js', 'icons.js'), 'utf8');
+const js = iconsJs + '\n' + fs.readFileSync(path.join(root, 'js', 'chimera-ui.js'), 'utf8');
 
 fs.writeFileSync(path.join(dist, 'chimeraui.css'), css + '\n');
 
 const meta = `// ==UserScript==
 // @name         ChimeraUI
 // @namespace    chimeraui
-// @version      0.1.0
-// @description  Dependency-free panel kit for userscripts: 35 elements, shadow-DOM safe.
+// @version      0.2.0
+// @description  Dependency-free panel kit for userscripts: 37 components, 65 icons.
 // @author       lolcaken
 // @license      MIT
 // @match        *://*/*
@@ -42,7 +43,7 @@ const meta = `// ==UserScript==
 `;
 
 const bundle = meta + `
-/* ChimeraUI 0.1.0 — built ${new Date().toISOString().slice(0, 10)} */
+/* ChimeraUI 0.2.0 — built ${new Date().toISOString().slice(0, 10)} */
 (function () {
   'use strict';
   var CSS = ${JSON.stringify(css)};

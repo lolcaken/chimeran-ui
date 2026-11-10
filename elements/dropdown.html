@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dropdown — ChimeraUI</title>
+<link rel="stylesheet" href="../css/docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/elements/icon.css">
+  <link rel="stylesheet" href="../css/elements/dropdown.css">
+  <link rel="stylesheet" href="../css/elements/button.css">
+</head>
+<body class="n1-root">
+<main class="cu-page">
+  <nav class="cu-crumb"><a href="../index.html">ChimeraUI</a><span>/</span><a href="../index.html#Inputs">Inputs</a><span>/</span>Dropdown</nav>
+  <h1 class="cu-title">Dropdown</h1>
+  <p class="cu-lede">A real select with a surface you can style: 42px trigger, animated list, check on the active row. The list is placed by the behaviour with fixed coordinates, so it escapes clipped scroll panes and flips up when it runs out of room.</p>
+  <div class="cu-label">Row</div>
+  <div class="cu-stage">
+    <div class="n1-dd" data-cn="select" data-value="high">
+      <button class="n1-dd-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+        <span class="n1-label">Quality</span>
+        <span class="n1-dd-value"><span>High</span><span class="n1-dd-chev" data-cn-icon="chevron-down"></span></span>
+      </button>
+      <div class="n1-dd-menu" role="listbox" aria-label="Quality" hidden>
+        <button class="n1-dd-item" type="button" role="option" aria-selected="true" data-value="high"><span>High</span><span class="n1-dd-check" data-cn-icon="check"></span></button>
+        <button class="n1-dd-item" type="button" role="option" aria-selected="false" data-value="medium"><span>Medium</span><span class="n1-dd-check" data-cn-icon="check"></span></button>
+        <button class="n1-dd-item" type="button" role="option" aria-selected="false" data-value="low"><span>Low</span><span class="n1-dd-check" data-cn-icon="check"></span></button>
+        <button class="n1-dd-item" type="button" role="option" aria-selected="false" data-value="off"><span>Off</span><span class="n1-dd-check" data-cn-icon="check"></span></button>
+      </div>
+    </div>
+  </div>
+  <div class="cu-label">With a hidden field</div>
+  <div class="cu-stage">
+    <div class="n1-dd" data-cn="select" data-value="native">
+      <input type="hidden" name="resolution" value="native">
+      <button class="n1-dd-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+        <span class="n1-label">Resolution</span>
+        <span class="n1-dd-value"><span>Native</span><span class="n1-dd-chev" data-cn-icon="chevron-down"></span></span>
+      </button>
+      <div class="n1-dd-menu" role="listbox" aria-label="Resolution" hidden>
+        <button class="n1-dd-item" type="button" role="option" aria-selected="true" data-value="native"><span>Native</span><span class="n1-dd-check" data-cn-icon="check"></span></button>
+        <button class="n1-dd-item" type="button" role="option" aria-selected="false" data-value="75"><span>75%</span><span class="n1-dd-check" data-cn-icon="check"></span></button>
+        <button class="n1-dd-item" type="button" role="option" aria-selected="false" data-value="50"><span>50%</span><span class="n1-dd-check" data-cn-icon="check"></span></button>
+      </div>
+    </div>
+  </div>
+  <div class="cu-label">Markup</div>
+  <pre class="cu-snippet">&lt;div class="n1-dd" data-cn="select" data-value="high"&gt;
+  &lt;button class="n1-dd-btn" type="button" aria-haspopup="listbox" aria-expanded="false"&gt;
+    &lt;span class="n1-label"&gt;Quality&lt;/span&gt;
+    &lt;span class="n1-dd-value"&gt;
+      &lt;span&gt;High&lt;/span&gt;
+      &lt;span class="n1-dd-chev" data-cn-icon="chevron-down"&gt;&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="n1-dd-menu" role="listbox" hidden&gt;
+    &lt;button class="n1-dd-item" role="option" aria-selected="true" data-value="high"&gt;
+      &lt;span&gt;High&lt;/span&gt;&lt;span class="n1-dd-check" data-cn-icon="check"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  <footer class="cu-foot">
+    <span>ChimeraUI 0.2.0</span>
+    <a href="../index.html">All elements</a>
+    <a href="https://github.com/lolcaken/chimeran-ui">GitHub</a>
+  </footer>
+</main>
+<script src="../js/icons.js"></script>
+<script src="../js/chimera-ui.js"></script>
+<script>ChimeraUI.attach(document);</script>
+</body>
+</html>
